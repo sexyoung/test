@@ -1,0 +1,11 @@
+low poly cat
+Author: kmeierhofer
+Author URL: https://sketchfab.com/kmeierhofer
+Source: https://sketchfab.com/3d-models/low-poly-cat-80ac4ce6cf72498eaa1572d6ec042aba
+License: Creative Commons Attribution 4.0 International (CC BY 4.0)
+License URL: https://creativecommons.org/licenses/by/4.0/
+
+Attribution is taken from the supplied GLB's asset.extras. The original GLB is
+preserved. The application normalizes its size and placement and allows color
+and surface shading adjustments. Exported variants retain attribution in the
+root object's extras. Retain credit when sharing derived models.

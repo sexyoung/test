@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Low Poly Park 引擎對照</title>
+<title>夕光貓園 · Sunlit Grove</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap">
 <style>
@@ -114,18 +114,15 @@
 <body>
 <main class="page">
   <header>
-    <h1>Low Poly Park 引擎對照</h1>
-    <p class="lede">同一座 low poly 公園，分別用 Three.js、Babylon.js 和 PlayCanvas 畫出來。場景資料、角色模擬和量測程式三邊共用，差別只在引擎本身。</p>
-    <div class="spec" id="spec">
-      <span><b>約 27.7 萬</b> 個三角形</span>
-      <span><b>20</b> 個 instancing 批次（6,329 個物件）</span>
-      <span><b>261</b> 個每幀更新的場景節點</span>
-      <span><b>2048²</b> 陰影貼圖</span>
-    </div>
+    <h1>夕光貓園 <span style="font-size:.4em;letter-spacing:.12em">SUNLIT GROVE</span></h1>
+    <p class="lede">沿著湖畔小徑，看貓咪穿過暖色的午後。全新低多邊形公園，三個觀賞角度，沒有任務，也不必趕路。</p>
+    <div class="links" style="margin-top:18px"><a class="open" href="demos/three/index.html">進入夕光貓園 →</a><a href="demos/pet/index.html">打開貓咪工作室 ↗</a></div>
   </header>
 
+  <a href="demos/three/index.html" aria-label="進入夕光貓園"><img src="park-preview.png" alt="暖色樹林圍繞湖岸、木橋與涼亭的低多邊形公園" style="display:block;width:100%;border-radius:18px;aspect-ratio:16/10;object-fit:cover"></a>
   <section>
-    <h2>三個引擎的展示</h2>
+    <h2>原版場景 · 引擎比較</h2>
+    <p class="note">以下保留原本的公園與固定測試條件，用於比較引擎；與新版夕光貓園的場景工作量不同。</p>
     <div class="cards" id="cards"></div>
     <div class="links">
       <a href="demos/pet/index.html">🐾 寵物捏臉（Three.js）</a>
@@ -193,7 +190,7 @@
         body.appendChild(dl);
       }
       var a = el('a', 'open', '開啟 ' + engine.name + ' 展示');
-      a.href = 'demos/' + engine.id + '/index.html';
+      a.href = 'demos/' + engine.id + '/index.html' + (engine.id === 'three' ? '?scene=legacy' : '');
       body.appendChild(a);
       card.appendChild(body);
       cards.appendChild(card);

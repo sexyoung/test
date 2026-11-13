@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>寵物捏臉</title>
+  <title>Low-poly 貓咪工作室</title>
   <style>
     :root {
       --bg: #eef6ea; --panel: #ffffff; --ink: #24312a; --muted: #6a776f; --line: #dfe7da;
@@ -22,13 +22,13 @@
     canvas { display: block; width: 100%; height: 100%; touch-action: none; }
     .top { position: absolute; left: 16px; top: 14px; right: 16px; display: flex; gap: 10px; align-items: center; pointer-events: none; }
     .top > * { pointer-events: auto; }
-    .back { color: var(--ink); text-decoration: none; background: color-mix(in srgb, var(--panel) 85%, transparent); padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); }
+    .back { white-space: nowrap; color: var(--ink); text-decoration: none; background: color-mix(in srgb, var(--panel) 85%, transparent); padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); }
     .backdrops { display: flex; gap: 6px; background: color-mix(in srgb, var(--panel) 85%, transparent); padding: 5px; border-radius: 999px; border: 1px solid var(--line); }
     .backdrops button { width: 22px; height: 22px; border-radius: 50%; border: 2px solid #fff; cursor: pointer; padding: 0; box-shadow: 0 0 0 1px var(--line); }
     .backdrops button[aria-pressed="true"] { box-shadow: 0 0 0 2px var(--ink); }
     .stage { background: linear-gradient(180deg, #f6a3b3 0%, #f6a3b3 35%, #fde2d6 100%); transition: background .3s; }
     .stats { margin-left: auto; color: var(--muted); font-size: 12px; background: color-mix(in srgb, var(--panel) 85%, transparent); padding: 4px 10px; border-radius: 999px; }
-    .anims { position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%); display: flex; gap: 6px; background: color-mix(in srgb, var(--panel) 90%, transparent); padding: 6px; border-radius: 999px; border: 1px solid var(--line); }
+    .anims { white-space: nowrap; position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%); display: flex; gap: 6px; background: color-mix(in srgb, var(--panel) 90%, transparent); padding: 6px; border-radius: 999px; border: 1px solid var(--line); }
     .anims button { border: 0; background: transparent; color: var(--ink); padding: 7px 14px; border-radius: 999px; font: inherit; cursor: pointer; }
     .anims button[aria-pressed="true"] { background: var(--chip-on); color: var(--chip-on-ink); }
 
@@ -42,6 +42,8 @@
     .chips button { border: 1px solid var(--line); background: var(--chip); color: var(--ink); padding: 6px 12px; border-radius: 999px; font: inherit; cursor: pointer; }
     .chips button[aria-pressed="true"] { background: var(--chip-on); color: var(--chip-on-ink); border-color: var(--chip-on); }
     input[type="range"] { width: 100%; accent-color: var(--accent); }
+    select { width: 100%; padding: 9px; border: 1px solid var(--line); border-radius: 8px; background: var(--chip); color: var(--ink); font: inherit; }
+    [hidden] { display: none !important; }
     input[type="text"] { width: 100%; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--line); background: var(--chip); color: var(--ink); font: inherit; }
     .colors { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
     .colors label { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 8px; background: var(--chip); cursor: pointer; }
@@ -50,11 +52,16 @@
     .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
     .actions button { padding: 10px; border-radius: 10px; border: 1px solid var(--line); background: var(--chip); color: var(--ink); font: inherit; font-weight: 600; cursor: pointer; }
     .actions .primary { grid-column: 1 / -1; background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+    button:disabled { opacity: .5; cursor: wait; }
+    .hint a { color: inherit; }
+    #motion { border-top: 1px solid var(--line); padding-top: 14px; }
+    #motion .label { margin-top: 10px; }
     .hint { color: var(--muted); font-size: 12px; margin: 10px 0 0; }
 
     @media (max-width: 760px) {
       .app { grid-template-columns: 1fr; grid-template-rows: 52vh auto; height: auto; }
       .stage { height: 52vh; }
+      .stats { position: absolute; top: 40px; right: 0; font-size: 10px; }
       aside { border-left: 0; border-top: 1px solid var(--line); padding: 16px; }
     }
   </style>
@@ -71,16 +78,34 @@
       <div class="anims" id="anims"></div>
     </div>
     <aside>
-      <h1>寵物捏臉</h1>
-      <p class="sub">調整外觀，拖曳畫面可以旋轉、滾輪縮放。</p>
+      <h1>貓咪工作室</h1>
+      <p class="sub">保留貓咪連續的身形，微調比例與毛色。</p>
+      <div class="field">
+        <label class="label" for="model">初始模型</label>
+        <select id="model" aria-describedby="modelDescription"></select>
+        <p class="hint" id="modelDescription"></p>
+      </div>
       <form id="form" autocomplete="off"></form>
+      <div id="motion">
+        <div id="animationControls">
+        <label class="label" for="speed">跑步速度 <output id="speedValue">×1.00</output></label>
+        <input id="speed" type="range" min="0.25" max="1.5" step="0.05" value="1" disabled>
+        <label class="label" for="timeline">動作時間軸</label>
+        <input id="timeline" type="range" min="0" max="1.5" step="0.005" value="0" disabled>
+        </div>
+        <label><input id="wireframe" type="checkbox" disabled> 顯示網格線</label>
+      </div>
+      <p id="status" class="hint" role="status" aria-live="polite"></p>
       <hr>
       <div class="actions">
         <button type="button" class="primary" id="toPark">帶去公園散步 →</button>
-        <button type="button" id="random">🎲 隨機</button>
+        <button type="button" id="random">隨機微調</button>
+        <button type="button" id="reset">還原外觀</button>
         <button type="button" id="download">下載 .glb</button>
       </div>
-      <p class="hint">設定會自動存在這個瀏覽器裡。到 Three.js 公園後，寵物會跟著你走，你跳的時候牠也會跳。</p>
+      <p class="hint">模型選擇與外觀會自動儲存在這個瀏覽器。</p>
+      <p class="hint" id="modelNote"></p>
+      <p class="hint" id="credit"></p>
     </aside>
   </div>
   <script type="module" src="./main.js"></script>

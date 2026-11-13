@@ -1,0 +1,11 @@
+Lowpoly Cat Rig + Run Animation
+Author: Daily Lowpoly
+Author URL: https://sketchfab.com/dailyfree3d
+Source: https://sketchfab.com/3d-models/lowpoly-cat-rig-run-animation-c36df576c9ae4ed28e89069b1a2f427a
+License: Creative Commons Attribution 4.0 International (CC BY 4.0)
+License URL: https://creativecommons.org/licenses/by/4.0/
+
+The original GLB is preserved. The application normalizes its orientation and
+size, uses a matte material and allows color and bone-scale adjustments.
+Exported variants retain the source animation, skin weights and attribution
+in the root object's extras. Please retain credit when sharing derived models.

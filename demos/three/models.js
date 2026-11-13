@@ -7,6 +7,7 @@ import { AnimationMixer, LoopOnce, Vector3 } from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { groundHeight, isWalkable } from '../../shared/world.js';
 import { buildPet, loadPet } from '../pet/pet.js';
+import { createCat, loadCat } from '../pet/rigged-cat.js';
 
 // x/z in the park (metres), yaw in radians, y = height above the ground, play = clips to loop.
 // The player starts at (1.1, 27.2) looking towards -z (the pond).
@@ -89,7 +90,11 @@ export function createModels({ scene, camera, canvas, sim }) {
   });
   document.body.appendChild(petLink);
 
-  const pet = sim ? createFollowingPet({ scene, sim }) : null;
+  let pet = null;
+  if (sim) createFollowingPet({ scene, sim }).then(value => { pet = value; }).catch(error => {
+    console.warn('[models] following pet:', error);
+    petLink.textContent = '貓咪載入失敗 · 返回編輯器';
+  });
 
   return {
     update(dt) {
@@ -102,27 +107,39 @@ export function createModels({ scene, camera, canvas, sim }) {
 
 // ---- the pet from the pet editor (demos/pet) follows the player ----------------------------
 
-function createFollowingPet({ scene, sim }) {
-  const params = loadPet();
+async function createFollowingPet({ scene, sim }) {
+  const catParams = loadCat();
+  const params = catParams ?? loadPet();
   if (!params) return null;
-  const { root, animations } = buildPet(params);
+  const cat = catParams ? await createCat(catParams) : null;
+  const { root, animations } = cat ?? buildPet(params);
   const player = sim.player;
   const state = { x: player.x + 1.2, z: player.z - 0.5, yaw: player.yaw, speed: 0, wasGrounded: true };
   root.position.set(state.x, groundHeight(state.x, state.z), state.z);
   scene.add(root);
 
-  const mixer = new AnimationMixer(root);
-  const action = Object.fromEntries(animations.map((c) => [c.name, mixer.clipAction(c)]));
-  action.Idle.play();
-  action.Walk.play().setEffectiveWeight(0);
-  action.Happy.setLoop(LoopOnce, 1);
-  mixer.addEventListener('finished', (e) => { if (e.action === action.Happy) action.Happy.fadeOut(0.2); });
-  console.log(`[models] pet "${params.name}" (${params.species}) follows the player`);
+  const mixer = cat ? null : new AnimationMixer(root);
+  const action = cat ? {} : Object.fromEntries(animations.map((c) => [c.name, mixer.clipAction(c)]));
+  if (!cat) {
+    action.Idle.play();
+    action.Walk.play().setEffectiveWeight(0);
+    action.Happy.setLoop(LoopOnce, 1);
+    mixer.addEventListener('finished', (e) => { if (e.action === action.Happy) action.Happy.fadeOut(0.2); });
+  }
+  console.log(`[models] pet "${params.name}" (${cat ? 'rigged cat' : params.species}) follows the player`);
+  if (cat) {
+    const credit = document.createElement('a');
+    credit.href = root.userData.attribution.source;
+    credit.textContent = `Cat: ${root.userData.attribution.author} · ${root.userData.attribution.license} · 已修改`;
+    credit.target = '_blank'; credit.rel = 'noopener';
+    Object.assign(credit.style, { position: 'fixed', bottom: '4px', left: '8px', font: '10px system-ui', color: '#24312a', background: '#ffffffbb' });
+    document.body.append(credit);
+  }
 
   const turnTowards = (target, rate) => {
     let d = target - state.yaw;
     d = Math.atan2(Math.sin(d), Math.cos(d));
-    state.yaw += d * Math.min(1, rate);
+    state.yaw += d * (1 - Math.exp(-rate));
   };
 
   return {
@@ -131,11 +148,11 @@ function createFollowingPet({ scene, sim }) {
       const fx = Math.sin(player.yaw), fz = Math.cos(player.yaw);
       const tx = player.x - fx * 1.1 - fz * 0.9, tz = player.z - fz * 1.1 + fx * 0.9;
       let dx = tx - state.x, dz = tz - state.z;
-      const dist = Math.hypot(dx, dz);
-      if (dist > 25) { state.x = tx; state.z = tz; dx = dz = 0; } // fell too far behind: catch up instantly
+      let dist = Math.hypot(dx, dz);
+      if (dist > 25) { state.x = tx; state.z = tz; dx = dz = dist = 0; } // fell too far behind: catch up instantly
 
       const want = dist > 0.35 ? Math.min(7.5, 1.2 + dist * 1.8) : 0;
-      state.speed += (want - state.speed) * Math.min(1, dt * 6);
+      state.speed += (want - state.speed) * (1 - Math.exp(-dt * 6));
       if (state.speed > 0.05 && dist > 0.01) {
         const step = Math.min(dist, state.speed * dt);
         const nx = state.x + (dx / dist) * step, nz = state.z + (dz / dist) * step;
@@ -147,6 +164,14 @@ function createFollowingPet({ scene, sim }) {
       root.position.set(state.x, groundHeight(state.x, state.z), state.z);
       root.rotation.y = state.yaw;
 
+      if (cat) {
+        const moving = state.speed > 0.15 && dist > 0.35;
+        const mode = moving && cat.profile.animated ? 'run' : 'rest';
+        if (cat.mode !== mode) cat.setMode(mode);
+        cat.setSpeed(Math.max(0.4, Math.min(1.5, state.speed / 2)));
+        cat.update(dt);
+        return;
+      }
       // blend idle <-> walk, and hop along when the player jumps
       const w = Math.min(1, state.speed / 0.8);
       action.Walk.setEffectiveWeight(w);

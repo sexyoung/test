@@ -1,6 +1,9 @@
 # Demo contract
 
-Every folder here renders the **same** low-poly park with a different renderer:
+The engine comparison renders the **same** low-poly park with a different renderer.
+Three.js now opens the scenic showcase by default; use `three/index.html?scene=legacy`
+for the comparison scene. Benchmark (`bench=1`) and screenshot (`freeze`) requests
+automatically use the original implementation in `three/reference.js`.
 
 | Folder | Renderer |
 | --- | --- |
@@ -84,3 +87,93 @@ errors. Runs are serialised by a lock, so the command may wait for another run t
 Expected for the default scene: no errors, canvas 1280 x 720, at most 408 draw calls and
 about 423,000 triangles per frame with shadows (240 and 277,000 without). Fewer is fine when
 it comes from frustum culling.
+
+## Rigged cat editor (outside the benchmark contract)
+
+`pet/` now edits `public/models/lowpoly_cat_rig__run_animation.glb` through
+`pet/rigged-cat.js`. The original file is unchanged: one skinned mesh, 794
+triangles, 35 joints, one 1.5-second run clip, and no morph targets. The GLB has
+1,750 attribute vertices (including normal/UV splits); these are not 1,750
+unique geometric points. Source attribution is in the UI, exported extras and
+`public/models/lowpoly_cat_LICENSE.txt`.
+
+Customization uses bounded head/ear/tail bone scales, uniform size and a matte
+coat tint. It does not split the skin or rebuild geometry. The imported FBX
+armature basis needs an explicit bind-pose conversion for the standing preview;
+the original animation tracks are retained. Standing is a static bind pose,
+not an authored idle animation. Walking, jumping and detailed facial morphs
+are not yet authored for this asset.
+
+Settings use `lowpoly-rigged-cat-v1`, preserving older procedural-pet settings.
+The scenic Three.js park prefers the saved cat, defaulting to the original
+rigged runner. The legacy park retains its procedural-pet fallback. Benchmark
+runs continue to exclude extra models.
+
+With a dev or preview server running, verify editor controls, skin continuity
+at proportion extremes, export/reimport deformation, persistence, mobile layout
+and park integration:
+
+```sh
+node scripts/check-cat.mjs http://localhost:5173
+```
+
+The check requires Playwright Chromium and writes screenshots and an exported
+sample to the ignored `bench/out/` directory.
+
+The initial-model selector also supports `public/models/low_poly_cat.glb` by
+kmeierhofer (CC BY 4.0). This second asset has 15,672 triangles, 8,159 attribute
+vertices, and no skin, bones, morph targets or animations. It defaults to smooth
+shading with wireframe off. Only size, color and surface controls are exposed;
+the scenic park exhibits it in place alongside a running reference cat. In the
+legacy park, its follower translates without a gait animation. Both models support
+smooth/faceted shading. Flat normals are baked into an export-only geometry
+copy because glTF does not store the renderer's `flatShading` flag.
+
+The existing settings key remains compatible with earlier runner settings;
+missing `model` selects `runner`. Active model and appearance persist across
+reloads, and each model's adjustments are remembered during an editing session.
+The check above also verifies switching, detailed-model export, attribution,
+mobile layout and the detailed park follower. Original assets are never edited.
+
+## Scenic showcase: Sunlit Grove
+
+`three/index.html` loads `park/main.js`, a visual showcase with three camera
+presets, orbit controls, pause, and automatic or manual quality. The park uses
+the runner's faceted appearance as its visual reference: an irregular meadow,
+warm tree crowns, a lake loop, an arched timber bridge, and a pavilion. There is
+no player movement or gameplay. Saved runner proportions and appearance are
+retained; its original continuous skin and run clip animate along the path.
+
+`park/world.js` reuses the shared geometry builders and deterministic math but
+owns its scene layout. It merges buildings and paths, batches vegetation by
+spatial cell, and uses one directional shadow light and a procedural water
+surface without an additional reflection pass. The cat route is sampled once.
+Shaders are warmed before showing the scene. Reduced-motion preference starts
+the scene paused; returning from a hidden tab resets frame timing.
+
+`park/sky.js` adds a camera-relative sky dome with procedural drifting clouds,
+a visible sunset disk, and 8,000 seeded stars with subtle twinkling and a faint
+Milky Way band. Day/dusk/night buttons transition sky, fog, directional light,
+ambient light, and water color together, and save `lowpoly-park-time`. Manual
+time changes also work while paused; reduced motion applies them immediately.
+Sky and stars use two draws, no textures or extra shadow/reflection pass. Stars
+depth-test against the park so they never show through trees or buildings.
+
+Following the supplied Turbo Tails analysis, `park/quality.js` tests a lower
+quality level after sustained slow frames. It retains the change only if frame
+intervals improve by 15%; otherwise it restores the previous level and locks
+automatic changes. Manual quality is saved separately from cat settings. Frame
+intervals are not GPU timings or a guarantee of FPS on real devices.
+
+Run the showcase checks against a running development or production server:
+
+```sh
+node scripts/check-park.mjs http://localhost:5173
+```
+
+This checks camera controls, pause, mobile layout, quality persistence, both
+cat models, quality-probe rollback, time switching and persistence, reduced motion,
+and the original benchmark route. Screenshots
+go to `bench/out/`; a clean scene screenshot refreshes `public/park-preview.png`
+for the home page. The new scene has a different workload and should not be used
+to compare renderer performance with the reference demos.

@@ -243,11 +243,11 @@ export function createHarness({ engine, version, canvas }) {
   const withParams = (changes = {}) => {
     const q = new URLSearchParams();
     for (const [k, v] of params.all) if (!RUN_KEYS.includes(k)) q.set(k, v);
+    if (here === 'three') q.set('scene', 'legacy');
     for (const [k, v] of Object.entries(changes)) { if (v === null) q.delete(k); else q.set(k, v); }
     const s = q.toString();
     return `index.html${s ? `#${s}` : ''}`;
   };
-  const search = withParams().replace('index.html', '');
   window.addEventListener('hashchange', () => location.reload());
   hud.innerHTML = `
     <div class="lp-panel">
@@ -263,7 +263,7 @@ export function createHarness({ engine, version, canvas }) {
       <div class="lp-help">WASD／方向鍵移動 · Shift 跑 · 空白鍵跳 · 拖曳轉視角 · 滾輪縮放</div>
     </div>
     <nav class="lp-nav">
-      ${ENGINES.map(([dir, label]) => `<a href="../${dir}/index.html${search}"${dir === here ? ' class="lp-current"' : ''}>${label}</a>`).join('')}
+      ${ENGINES.map(([dir, label]) => `<a href="../${dir}/${withParams({ scene: dir === 'three' ? 'legacy' : null })}"${dir === here ? ' class="lp-current"' : ''}>${label}</a>`).join('')}
       <a href="../../bench.html">效能比較</a>
       <a href="../../index.html">首頁</a>
     </nav>`;
