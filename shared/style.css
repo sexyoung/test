@@ -1,0 +1,179 @@
+/* Shared page chrome for every demo: full-window canvas plus a small HUD. */
+
+html.lp-root,
+html.lp-root body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: #b2e2fc;
+  font-family: system-ui, -apple-system, 'Segoe UI', 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+}
+
+.lp-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  outline: none;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.lp-hud {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  color: #f4f8fb;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.lp-panel {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  max-width: min(440px, calc(100vw - 24px));
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(16, 28, 40, 0.72);
+  backdrop-filter: blur(6px);
+  pointer-events: auto;
+}
+
+.lp-title {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.lp-title span {
+  margin-left: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #a9c6dc;
+}
+
+.lp-stats {
+  margin-top: 4px;
+  font-variant-numeric: tabular-nums;
+  color: #ffe9a8;
+}
+
+.lp-scene {
+  color: #c3d6e4;
+}
+
+.lp-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.lp-presets a,
+.lp-nav a {
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  color: #f4f8fb;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.lp-presets a:hover,
+.lp-nav a:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.lp-help {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #a9c6dc;
+}
+
+.lp-nav {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 6px;
+  max-width: calc(100vw - 24px);
+  padding: 6px;
+  border-radius: 999px;
+  background: rgba(16, 28, 40, 0.72);
+  backdrop-filter: blur(6px);
+  pointer-events: auto;
+}
+
+.lp-nav a.lp-current {
+  background: #ffd23f;
+  color: #1c2a36;
+  font-weight: 700;
+}
+
+.lp-touch {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0;
+}
+
+.lp-stick {
+  position: absolute;
+  left: 22px;
+  bottom: 26px;
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  background: rgba(16, 28, 40, 0.45);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  touch-action: none;
+}
+
+.lp-knob {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 46px;
+  height: 46px;
+  margin: -23px 0 0 -23px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.lp-jump {
+  position: absolute;
+  right: 26px;
+  bottom: 44px;
+  width: 68px;
+  height: 68px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  background: rgba(16, 28, 40, 0.45);
+  color: #fff;
+  font-size: 18px;
+  touch-action: none;
+}
+
+@media (max-width: 720px) {
+  .lp-nav {
+    top: auto;
+    bottom: 150px;
+    right: 8px;
+    border-radius: 14px;
+    max-width: 46vw;
+  }
+  .lp-help {
+    display: none;
+  }
+  .lp-panel {
+    top: 8px;
+    left: 8px;
+    font-size: 12px;
+  }
+}

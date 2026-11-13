@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Low Poly Park 效能測試</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap">
+<style>
+  /* Layout: one centred column. Options first, then one result table per scenario. */
+  :root {
+    --bg: #eef6f1; --surface: #ffffff; --fg: #14241b; --muted: #55695d; --line: #cfe0d5;
+    --grass: #2e8b4f; --sky: #1f7fc9; --sun: #f2b90f; --bar: #9fd4b0;
+    --font-display: 'Space Grotesk', 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', system-ui, sans-serif;
+    --font-body: 'Inter', 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', system-ui, sans-serif;
+    --font-data: ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f1914; --surface: #17241d; --fg: #e6f0e9; --muted: #9bb0a3; --line: #2b3d33;
+      --grass: #78cf92; --sky: #6cbcf5; --sun: #ffd23f; --bar: #2f6b45; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f1914; --surface: #17241d; --fg: #e6f0e9; --muted: #9bb0a3; --line: #2b3d33;
+    --grass: #78cf92; --sky: #6cbcf5; --sun: #ffd23f; --bar: #2f6b45; color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 400 16px/1.65 var(--font-body); }
+  .page {
+    max-width: 1080px; margin: 0 auto; padding-block: 32px 64px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    display: flex; flex-direction: column; gap: 32px;
+  }
+  h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; margin: 0; text-wrap: balance; }
+  h1 { font-size: clamp(26px, 4.5vw, 38px); }
+  h2 { font-size: 21px; }
+  h3 { font-size: 17px; }
+  p { margin: 0; }
+  a { color: var(--sky); }
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid var(--sun); outline-offset: 2px; }
+  .muted { color: var(--muted); font-size: 14.5px; max-width: 72ch; }
+  section { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+  fieldset { border: 1px solid var(--line); border-radius: 12px; background: var(--surface); padding: 14px 16px; margin: 0; display: flex; flex-wrap: wrap; gap: 10px 22px; }
+  legend { font: 600 13px/1 var(--font-body); color: var(--muted); padding: 0 6px; }
+  label { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; }
+  select { font: inherit; padding: 4px 8px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); }
+  .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; }
+  button {
+    font: 600 15px/1 var(--font-body); padding: 12px 18px; border-radius: 10px; border: 1px solid var(--line);
+    background: var(--surface); color: var(--fg); cursor: pointer;
+  }
+  button.primary { background: var(--grass); color: var(--bg); border-color: transparent; }
+  button:hover { filter: brightness(1.06); }
+  .tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; min-width: 720px; font-size: 14px; }
+  th, td { padding: 9px 14px; text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  th:first-child, td:first-child { text-align: left; }
+  thead th { font: 600 12px/1.4 var(--font-body); color: var(--muted); }
+  tbody tr:last-child td { border-bottom: 0; }
+  td { font: 500 13px/1.5 var(--font-data); font-variant-numeric: tabular-nums; }
+  td:first-child { font: 600 14px/1.5 var(--font-body); }
+  td.best { color: var(--grass); font-weight: 700; }
+  textarea { width: 100%; height: 120px; font: 12px/1.4 var(--font-data); border-radius: 10px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); padding: 10px; }
+</style>
+</head>
+<body>
+<main class="page">
+  <header>
+    <p><a href="index.html">← 回到首頁</a></p>
+    <h1>在這台裝置上跑效能測試</h1>
+    <p class="muted" style="margin-top:10px">按下開始後，頁面會依序開啟每個引擎的展示，用固定的鏡頭路線和固定的模擬步進各跑一輪，全部跑完會自動回到這裡顯示結果。測試期間請讓這個分頁保持在前景，不要切換視窗。</p>
+  </header>
+
+  <section>
+    <fieldset>
+      <legend>場景</legend>
+      <label><input type="checkbox" id="sc-default" checked> 一般場景（NPC 24）</label>
+      <label><input type="checkbox" id="sc-crowd" checked> 人群壓力（NPC 400）</label>
+      <label><input type="checkbox" id="sc-dense"> 植被壓力（密度 ×6）</label>
+    </fieldset>
+    <fieldset>
+      <legend>選項</legend>
+      <label><input type="checkbox" id="opt-raw" checked> 加入原生 WebGL2 基準</label>
+      <label><input type="checkbox" id="opt-sync" checked> 另外量一輪含繪圖完成的總時間</label>
+      <label>每輪幀數
+        <select id="opt-frames"><option value="300" selected>300</option><option value="600">600</option><option value="120">120</option></select>
+      </label>
+    </fieldset>
+    <div class="actions">
+      <button class="primary" id="start" type="button">開始測試</button>
+      <span class="muted" id="estimate"></span>
+    </div>
+  </section>
+
+  <section id="results" hidden>
+    <h2>結果</h2>
+    <p class="muted" id="environment"></p>
+    <div id="tables" style="display:flex;flex-direction:column;gap:22px"></div>
+    <p class="muted">「CPU 每幀」是主執行緒每幀花在更新與送出繪圖指令的時間，數字越小代表引擎本身的負擔越輕。「含繪圖總時間」是每幀等到顯示卡把畫面畫完為止的時間。FPS 會被螢幕更新率限制住，所以在夠快的裝置上三個引擎的 FPS 會一樣，這時要看前兩欄。</p>
+    <div class="actions">
+      <button id="copy" type="button">複製結果（JSON）</button>
+      <span class="muted" id="copied"></span>
+    </div>
+    <textarea id="json" readonly hidden aria-label="測試結果 JSON"></textarea>
+  </section>
+</main>
+
+<script>
+(function () {
+  var KEY = 'lowpoly-chain';
+  var ENGINES = [['three', 'Three.js'], ['babylon', 'Babylon.js'], ['playcanvas', 'PlayCanvas']];
+  var SCENARIOS = { default: ['一般場景（NPC 24）', ''], crowd: ['人群壓力（NPC 400）', 'npcs=400'], dense: ['植被壓力（密度 ×6）', 'density=6'] };
+  var $ = function (id) { return document.getElementById(id); };
+
+  function loadChain() {
+    try { var s = sessionStorage.getItem(KEY); if (s) return JSON.parse(s); } catch (e) {}
+    try { var n = JSON.parse(window.name || 'null'); if (n && n.lowpolyChain) return n.lowpolyChain; } catch (e) {}
+    return null;
+  }
+  function saveChain(chain) {
+    try { sessionStorage.setItem(KEY, JSON.stringify(chain)); } catch (e) {}
+    try { window.name = JSON.stringify({ lowpolyChain: chain }); } catch (e) {}
+  }
+
+  function plan() {
+    var engines = ENGINES.slice();
+    if ($('opt-raw').checked) engines.push(['raw', '原生 WebGL2（基準）']);
+    var frames = Number($('opt-frames').value), warmup = Math.round(frames / 5);
+    var modes = $('opt-sync').checked ? ['normal', 'sync'] : ['normal'];
+    var queue = [];
+    Object.keys(SCENARIOS).forEach(function (sc) {
+      if (!$('sc-' + sc).checked) return;
+      modes.forEach(function (mode) {
+        engines.forEach(function (e) {
+          var hash = 'bench=1&chain=1&frames=' + frames + '&warmup=' + warmup + (SCENARIOS[sc][1] ? '&' + SCENARIOS[sc][1] : '') + (mode === 'sync' ? '&sync=1' : '');
+          queue.push({ engine: e[0], name: e[1], scenario: sc, mode: mode, hash: hash });
+        });
+      });
+    });
+    return queue;
+  }
+
+  function updateEstimate() {
+    var q = plan(), frames = Number($('opt-frames').value);
+    $('estimate').textContent = q.length ? '共 ' + q.length + ' 輪；在 60 FPS 的裝置上大約需要 ' + Math.ceil((q.length * (frames * 1.2 / 60 + 2.5)) / 60) + ' 分鐘。' : '請至少選一個場景。';
+    $('start').disabled = !q.length;
+  }
+  ['sc-default', 'sc-crowd', 'sc-dense', 'opt-raw', 'opt-sync', 'opt-frames'].forEach(function (id) { $(id).addEventListener('change', updateEstimate); });
+  updateEstimate();
+
+  $('start').addEventListener('click', function () {
+    var queue = plan();
+    if (!queue.length) return;
+    saveChain({ queue: queue, index: 0, results: [], startedAt: Date.now() });
+    location.href = 'demos/' + queue[0].engine + '/index.html#' + queue[0].hash;
+  });
+
+  var fmt = function (v, d) { return v === null || v === undefined || !isFinite(v) ? '–' : Number(v).toFixed(d === undefined ? 2 : d); };
+  var el = function (tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; };
+
+  function render(chain) {
+    var results = chain.results || [];
+    if (!results.length) return;
+    var host = $('tables');
+    host.textContent = '';
+    var find = function (sc, mode, engine) { return results.filter(function (r) { return r.scenario === sc && r.mode === mode && r.engine === engine; })[0]; };
+    var columns = [
+      ['CPU 每幀 (ms)', function (n) { return n && n.cpu.mean; }, 2, true],
+      ['CPU p95 (ms)', function (n) { return n && n.cpu.p95; }, 2, true],
+      ['含繪圖總時間 (ms)', function (n, s) { return s && s.total ? s.total.mean : null; }, 2, true],
+      ['FPS', function (n) { return n && n.fps; }, 1, false],
+      ['最慢 1% 幀間隔 (ms)', function (n) { return n && n.interval.p99; }, 1, true],
+      ['Draw calls', function (n) { return n && n.census ? n.census.drawCalls : null; }, 0, null],
+      ['WebGL 呼叫', function (n) { return n && n.census ? n.census.glCalls : null; }, 0, true],
+      ['到第一幀 (ms)', function (n) { return n && n.marks ? n.marks['first-frame'] : null; }, 0, true],
+    ];
+    Object.keys(SCENARIOS).forEach(function (sc) {
+      var engines = [];
+      results.forEach(function (r) { if (r.scenario === sc && engines.indexOf(r.engine) < 0) engines.push(r.engine); });
+      if (!engines.length) return;
+      var block = el('div');
+      block.style.cssText = 'display:flex;flex-direction:column;gap:8px;min-width:0';
+      block.appendChild(el('h3', '', SCENARIOS[sc][0]));
+      var wrap = el('div', 'tablewrap'), table = el('table'), thead = el('thead'), hr = el('tr');
+      hr.appendChild(el('th', '', '引擎'));
+      columns.forEach(function (c) { hr.appendChild(el('th', '', c[0])); });
+      thead.appendChild(hr); table.appendChild(thead);
+      var tbody = el('tbody');
+      var best = columns.map(function (c) {
+        if (c[3] === null) return null;
+        var vals = engines.filter(function (e) { return e !== 'raw'; }).map(function (e) { return c[1](find(sc, 'normal', e), find(sc, 'sync', e)); }).filter(function (v) { return typeof v === 'number' && isFinite(v); });
+        return vals.length ? (c[3] ? Math.min.apply(null, vals) : Math.max.apply(null, vals)) : null;
+      });
+      engines.forEach(function (e) {
+        var n = find(sc, 'normal', e), s = find(sc, 'sync', e), tr = el('tr');
+        tr.appendChild(el('td', '', (n || s).name + ' ' + ((n || s).version || '')));
+        columns.forEach(function (c, i) {
+          var v = c[1](n, s);
+          tr.appendChild(el('td', e !== 'raw' && best[i] !== null && v === best[i] ? 'best' : '', fmt(v, c[2])));
+        });
+        tbody.appendChild(tr);
+      });
+      table.appendChild(tbody); wrap.appendChild(table); block.appendChild(wrap); host.appendChild(block);
+    });
+    var first = results[0];
+    var done = chain.index >= chain.queue.length;
+    $('environment').textContent = (done ? '' : '測試尚未跑完（' + chain.index + '/' + chain.queue.length + '）。') +
+      '繪圖裝置：' + (first.gl && first.gl.renderer ? first.gl.renderer : '未知') + '；畫布 ' + first.canvas.width + '×' + first.canvas.height + '。';
+    $('json').value = JSON.stringify({ userAgent: navigator.userAgent, results: results });
+    $('results').hidden = false;
+  }
+
+  $('copy').addEventListener('click', function () {
+    var area = $('json');
+    var fallback = function () { area.hidden = false; area.focus(); area.select(); $('copied').textContent = '已選取文字，請按 Ctrl/⌘ + C 複製。'; };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(area.value).then(function () { $('copied').textContent = '已複製。'; }, fallback);
+    } else fallback();
+  });
+
+  var chain = loadChain();
+  if (chain) render(chain);
+})();
+</script>
+</body>
+</html>

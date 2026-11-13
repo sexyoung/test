@@ -1,0 +1,39 @@
+engines: three, babylon, playcanvas, raw | scenarios: default, crowd, dense | runs: 3 | frames: 150 (+30 warm-up) | 1280x720
+  built three in 0.1 s
+  built babylon in 0.2 s
+  built playcanvas in 0.1 s
+  built raw in 0.0 s
+  shot three/hero: bench/out/three-hero.png  vs reference: {"meanAbsDiff":0.03,"differentPixelsPct":0,"meanColorA":[136,178,137],"meanColorB":[136,178,137]}
+  shot three/fly: bench/out/three-fly.png  vs reference: {"meanAbsDiff":0.04,"differentPixelsPct":0,"meanColorA":[153,201,125],"meanColorB":[153,201,125]}
+  shot babylon/hero: bench/out/babylon-hero.png  vs reference: {"meanAbsDiff":0.3,"differentPixelsPct":0.09,"meanColorA":[136,178,137],"meanColorB":[135,178,137]}
+  shot babylon/fly: bench/out/babylon-fly.png  vs reference: {"meanAbsDiff":0.43,"differentPixelsPct":0.42,"meanColorA":[153,201,125],"meanColorB":[153,201,125]}
+  shot playcanvas/hero: bench/out/playcanvas-hero.png  vs reference: {"meanAbsDiff":0.16,"differentPixelsPct":0.04,"meanColorA":[136,178,137],"meanColorB":[136,178,137]}
+  shot playcanvas/fly: bench/out/playcanvas-fly.png  vs reference: {"meanAbsDiff":0.25,"differentPixelsPct":0.17,"meanColorA":[153,201,125],"meanColorB":[153,201,125]}
+  shot raw/hero: bench/out/raw-hero.png
+  shot raw/fly: bench/out/raw-fly.png
+  default   #0 three      interval 149.01 ms (6.7 fps)  cpu 0.75 ms  p95 2.40  draws 316  tris 417534  [29 s]
+  default   #0 babylon    interval 184.42 ms (5.4 fps)  cpu 2.25 ms  p95 6.50  draws 317  tris 417694  [35 s]
+  default   #0 playcanvas interval 273.96 ms (3.6 fps)  cpu 1.97 ms  p95 5.70  draws 314  tris 416734  [53 s]
+  default   #0 raw        interval 197.03 ms (5.1 fps)  cpu 0.69 ms  p95 3.90  draws 408  tris 422896  [39 s]
+  default   #1 babylon    interval 159.38 ms (6.3 fps)  cpu 1.71 ms  p95 4.20  draws 317  tris 417694  [32 s]
+  default   #1 playcanvas interval 177.14 ms (5.7 fps)  cpu 0.90 ms  p95 3.40  draws 314  tris 416734  [35 s]
+  default   #1 raw        interval 147.85 ms (6.8 fps)  cpu 0.24 ms  p95 0.70  draws 408  tris 422896  [29 s]
+  default   #1 three      interval 151.36 ms (6.6 fps)  cpu 0.77 ms  p95 3.00  draws 316  tris 417534  [29 s]
+  default   #2 playcanvas interval 177.63 ms (5.6 fps)  cpu 0.68 ms  p95 2.30  draws 314  tris 416734  [35 s]
+  default   #2 raw        interval 148.05 ms (6.8 fps)  cpu 0.29 ms  p95 1.40  draws 408  tris 422896  [29 s]
+  default   #2 three      interval 151.89 ms (6.6 fps)  cpu 0.77 ms  p95 2.50  draws 316  tris 417534  [30 s]
+  default   #2 babylon    interval 152.97 ms (6.5 fps)  cpu 1.15 ms  p95 3.30  draws 317  tris 417694  [30 s]
+  crowd     #0 three      interval 205.74 ms (4.9 fps)  cpu 4.21 ms  p95 8.70  draws 3940.8  tris 533592  [39 s]
+  crowd     #0 babylon    interval 227.73 ms (4.4 fps)  cpu 10.91 ms  p95 20.10  draws 3951.3  tris 534028  [43 s]
+  crowd     #0 playcanvas interval 231.65 ms (4.3 fps)  cpu 2.67 ms  p95 5.20  draws 3939  tris 532798  [45 s]
+  crowd     #0 raw        interval 199.19 ms (5.0 fps)  cpu 1.49 ms  p95 4.20  draws 4920  tris 567280  [38 s]
+  crowd     #1 babylon    interval 200.35 ms (5.0 fps)  cpu 8.71 ms  p95 10.80  draws 3951.3  tris 534028  [39 s]
+  crowd     #1 playcanvas interval 220.65 ms (4.5 fps)  cpu 2.62 ms  p95 5.10  draws 3939  tris 532798  [43 s]
+  crowd     #1 raw        interval 213.83 ms (4.7 fps)  cpu 1.40 ms  p95 3.20  draws 4920  tris 567280  [41 s]
+  crowd     #1 three      interval 204.83 ms (4.9 fps)  cpu 3.80 ms  p95 7.80  draws 3940.8  tris 533592  [40 s]
+  crowd     #2 playcanvas interval 231.50 ms (4.3 fps)  cpu 2.82 ms  p95 6.10  draws 3939  tris 532798  [46 s]
+  crowd     #2 raw        interval 203.14 ms (4.9 fps)  cpu 1.21 ms  p95 2.80  draws 4920  tris 567280  [38 s]
+  crowd     #2 three      interval 193.66 ms (5.2 fps)  cpu 3.27 ms  p95 4.90  draws 3940.8  tris 533592  [38 s]
+  crowd     #2 babylon    interval 198.61 ms (5.0 fps)  cpu 8.43 ms  p95 10.50  draws 3951.3  tris 534028  [38 s]
+  dense     #0 three      interval 760.37 ms (1.3 fps)  cpu 1.07 ms  p95 3.90  draws 316  tris 2190324  [145 s]
+  dense     #0 babylon    interval 708.08 ms (1.4 fps)  cpu 1.49 ms  p95 4.00  draws 317  tris 2190484  [135 s]

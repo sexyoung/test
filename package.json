@@ -1,0 +1,24 @@
+{
+  "name": "low-poly-engine-showdown",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "The same low-poly park scene built with Three.js, Babylon.js and PlayCanvas, plus a benchmark harness",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview --host",
+    "check": "node bench/run.mjs --quick",
+    "bench": "node bench/run.mjs",
+    "models": "node scripts/make-glb.mjs"
+  },
+  "dependencies": {
+    "@babylonjs/core": "^9.36.0",
+    "playcanvas": "^2.24.1",
+    "three": "^0.187.0"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.65.0",
+    "vite": "^8.3.8"
+  }
+}

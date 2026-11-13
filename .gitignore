@@ -1,0 +1,5 @@
+node_modules/
+dist/
+bench/.build/
+bench/.lock/
+bench/out/

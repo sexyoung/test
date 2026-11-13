@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Low Poly Park 引擎對照</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap">
+<style>
+  /* Layout: one centred column. Engine cards in a three-up grid, then the measured numbers as tables. */
+  :root {
+    --bg: #eef6f1;
+    --surface: #ffffff;
+    --fg: #14241b;
+    --muted: #55695d;
+    --line: #cfe0d5;
+    --grass: #2e8b4f;
+    --sky: #1f7fc9;
+    --sun: #f2b90f;
+    --roof: #c8542f;
+    --bar: #9fd4b0;
+    --font-display: 'Space Grotesk', 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', system-ui, sans-serif;
+    --font-body: 'Inter', 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', system-ui, sans-serif;
+    --font-data: ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f1914; --surface: #17241d; --fg: #e6f0e9; --muted: #9bb0a3; --line: #2b3d33;
+      --grass: #78cf92; --sky: #6cbcf5; --sun: #ffd23f; --roof: #f08a63; --bar: #2f6b45;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f1914; --surface: #17241d; --fg: #e6f0e9; --muted: #9bb0a3; --line: #2b3d33;
+    --grass: #78cf92; --sky: #6cbcf5; --sun: #ffd23f; --roof: #f08a63; --bar: #2f6b45;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font: 400 16px/1.65 var(--font-body);
+  }
+  .page {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding-block: 40px 64px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; margin: 0; text-wrap: balance; }
+  h1 { font-size: clamp(30px, 5vw, 44px); font-weight: 700; letter-spacing: -0.01em; }
+  h2 { font-size: 22px; font-weight: 700; }
+  h3 { font-size: 19px; font-weight: 700; }
+  p { margin: 0; }
+  a { color: var(--sky); }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--sun); outline-offset: 2px; }
+  .lede { max-width: 62ch; color: var(--muted); margin-top: 12px; }
+  .spec {
+    margin-top: 16px;
+    font: 500 13px/1.5 var(--font-data);
+    color: var(--muted);
+    display: flex; flex-wrap: wrap; gap: 6px 18px;
+  }
+  .spec b { color: var(--fg); font-weight: 600; }
+  section { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    min-width: 0;
+  }
+  .card .shot { aspect-ratio: 16 / 9; background: var(--line); display: block; width: 100%; object-fit: cover; }
+  .card .body { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .card .version { font: 500 12px/1 var(--font-data); color: var(--muted); margin-left: 8px; }
+  .card p { color: var(--muted); font-size: 14.5px; }
+  .facts { display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; font-size: 13.5px; margin: 2px 0 6px; }
+  .facts dt { color: var(--muted); }
+  .facts dd { margin: 0; font: 500 13px/1.7 var(--font-data); font-variant-numeric: tabular-nums; text-align: right; }
+  .open {
+    margin-top: auto;
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 10px 14px; border-radius: 10px;
+    background: var(--grass); color: var(--bg);
+    font-weight: 600; text-decoration: none;
+  }
+  .open:hover { filter: brightness(1.08); }
+  .links { display: flex; flex-wrap: wrap; gap: 10px 22px; font-size: 15px; }
+  .note { color: var(--muted); font-size: 14.5px; max-width: 72ch; }
+  .tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; min-width: 640px; font-size: 14px; }
+  th, td { padding: 9px 14px; text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  th:first-child, td:first-child { text-align: left; }
+  thead th { font: 600 12px/1.4 var(--font-body); color: var(--muted); letter-spacing: 0.02em; }
+  tbody tr:last-child td { border-bottom: 0; }
+  td { font: 500 13px/1.5 var(--font-data); font-variant-numeric: tabular-nums; }
+  td:first-child { font: 600 14px/1.5 var(--font-body); }
+  td.best { color: var(--grass); font-weight: 700; }
+  .cell { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+  .meter { height: 4px; border-radius: 2px; background: var(--bar); align-self: stretch; margin-left: auto; }
+  ul.rules { margin: 0; padding-left: 20px; color: var(--muted); font-size: 14.5px; max-width: 76ch; display: flex; flex-direction: column; gap: 4px; }
+  ul.rules b { color: var(--fg); font-weight: 600; }
+  kbd { font: 500 12px/1 var(--font-data); padding: 3px 6px; border: 1px solid var(--line); border-radius: 5px; background: var(--surface); }
+</style>
+</head>
+<body>
+<main class="page">
+  <header>
+    <h1>Low Poly Park 引擎對照</h1>
+    <p class="lede">同一座 low poly 公園，分別用 Three.js、Babylon.js 和 PlayCanvas 畫出來。場景資料、角色模擬和量測程式三邊共用，差別只在引擎本身。</p>
+    <div class="spec" id="spec">
+      <span><b>約 27.7 萬</b> 個三角形</span>
+      <span><b>20</b> 個 instancing 批次（6,329 個物件）</span>
+      <span><b>261</b> 個每幀更新的場景節點</span>
+      <span><b>2048²</b> 陰影貼圖</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>三個引擎的展示</h2>
+    <div class="cards" id="cards"></div>
+    <div class="links">
+      <a href="demos/pet/index.html">🐾 寵物捏臉（Three.js）</a>
+      <a href="demos/raw/index.html">原生 WebGL2 參考實作（不使用引擎）</a>
+      <a href="bench.html">在這台裝置上跑效能測試</a>
+    </div>
+    <p class="note">操作方式：<kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> 或方向鍵移動，<kbd>Shift</kbd> 跑步，<kbd>空白鍵</kbd> 跳，拖曳滑鼠轉視角，滾輪縮放。手機上會出現虛擬搖桿。每個展示左上角都能切換「人群 ×300」「植被 ×4」等壓力場景。</p>
+  </section>
+
+  <section id="results" hidden>
+    <h2>量測結果</h2>
+    <p class="note" id="environment"></p>
+    <div id="tables" style="display:flex;flex-direction:column;gap:22px"></div>
+  </section>
+
+  <section>
+    <h2>怎麼確保比較公平</h2>
+    <ul class="rules">
+      <li><b>同一份資料。</b>三個引擎讀取同一個程式產生的頂點、顏色、法線和矩陣，三角形數量完全相同。</li>
+      <li><b>同樣的批次結構。</b>靜態物件（樹、石頭、花草）一律用硬體 instancing，一個批次一次繪製；會動的角色、鳥、雲則是一般的場景節點，一個物件一次繪製。</li>
+      <li><b>同樣的畫面設定。</b>都用 WebGL2、同樣的解析度與抗鋸齒、一盞有陰影的太陽光加一盞補光、線性霧，不加後製。</li>
+      <li><b>同樣的量測方式。</b>逐幀計時由共用程式負責，並直接統計 WebGL 呼叫次數，不採用各引擎自己回報的數字。</li>
+    </ul>
+  </section>
+</main>
+
+<script>
+(function () {
+  var ENGINES = [
+    { id: 'three', name: 'Three.js', blurb: '渲染函式庫。生態最大，物理、輸入、音效要自己選配。' },
+    { id: 'babylon', name: 'Babylon.js', blurb: '完整引擎。物理、GUI、除錯工具都內建。' },
+    { id: 'playcanvas', name: 'PlayCanvas', blurb: '實體元件架構的引擎，另有雲端視覺化編輯器。' },
+  ];
+  var SCENARIO_LABELS = { default: '一般場景（NPC 24）', crowd: '人群壓力（NPC 400）', dense: '植被壓力（密度 ×6）', noshadow: '關閉陰影' };
+  var cards = document.getElementById('cards');
+  var fmt = function (v, d) { return v === null || v === undefined || !isFinite(v) ? '–' : Number(v).toFixed(d === undefined ? 2 : d); };
+  var kb = function (v) { return v ? Math.round(v / 1024) + ' KB' : '–'; };
+  var el = function (tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; };
+
+  function renderCards(data) {
+    cards.textContent = '';
+    ENGINES.forEach(function (engine) {
+      var s = data && data.summary && data.summary.normal && data.summary.normal.default ? data.summary.normal.default[engine.id] : null;
+      var bundle = data && data.bundles ? data.bundles[engine.id] : null;
+      var card = el('article', 'card');
+      if (data && data.shots && data.shots[engine.id]) {
+        var img = el('img', 'shot');
+        img.src = data.shots[engine.id];
+        img.alt = engine.name + ' 畫出的公園場景';
+        img.loading = 'lazy';
+        card.appendChild(img);
+      }
+      var body = el('div', 'body');
+      var h = el('h3', '', engine.name);
+      if (s && s.version) h.appendChild(el('span', 'version', s.version));
+      body.appendChild(h);
+      body.appendChild(el('p', '', engine.blurb));
+      if (s || bundle) {
+        var dl = el('dl', 'facts');
+        var row = function (k, v) { dl.appendChild(el('dt', '', k)); dl.appendChild(el('dd', '', v)); };
+        if (s) row('每幀 CPU 時間', fmt(s.cpuMean) + ' ms');
+        if (s) row('每幀 WebGL 呼叫', fmt(s.glCalls, 0));
+        if (bundle) row('JS 大小（gzip）', kb(bundle.js.gzip));
+        if (s) row('到第一幀', fmt(s.firstFrameMs, 0) + ' ms');
+        body.appendChild(dl);
+      }
+      var a = el('a', 'open', '開啟 ' + engine.name + ' 展示');
+      a.href = 'demos/' + engine.id + '/index.html';
+      body.appendChild(a);
+      card.appendChild(body);
+      cards.appendChild(card);
+    });
+  }
+
+  function renderTables(data) {
+    var modes = data.summary || {};
+    var normal = modes.normal || {};
+    var sync = modes.sync || {};
+    var scenarios = Object.keys(normal);
+    if (!scenarios.length) return;
+    var engines = Object.keys(normal[scenarios[0]]).filter(function (e) { return normal[scenarios[0]][e]; });
+    var names = { three: 'Three.js', babylon: 'Babylon.js', playcanvas: 'PlayCanvas', raw: '原生 WebGL2（基準）' };
+    var columns = [
+      { label: 'CPU 每幀 (ms)', get: function (s) { return s.cpuMean; }, digits: 2, lower: true, bar: true },
+      { label: 'CPU p95 (ms)', get: function (s) { return s.cpuP95; }, digits: 2, lower: true },
+      { label: '含繪圖總時間 (ms)', get: function (s, y) { return y ? y.totalMean : null; }, digits: 1, lower: true },
+      { label: 'FPS', get: function (s) { return s.fps; }, digits: 1, lower: false },
+      { label: 'Draw calls', get: function (s) { return s.drawCalls; }, digits: 0 },
+      { label: 'WebGL 呼叫', get: function (s) { return s.glCalls; }, digits: 0, lower: true },
+      { label: 'JS heap (MB)', get: function (s) { return s.heapUsedAfterGcMB; }, digits: 1, lower: true },
+    ];
+    var host = document.getElementById('tables');
+    scenarios.forEach(function (sc) {
+      var block = el('div');
+      block.style.cssText = 'display:flex;flex-direction:column;gap:8px;min-width:0';
+      block.appendChild(el('h3', '', SCENARIO_LABELS[sc] || sc));
+      var wrap = el('div', 'tablewrap');
+      var table = el('table');
+      var thead = el('thead'), hr = el('tr');
+      hr.appendChild(el('th', '', '引擎'));
+      columns.forEach(function (c) { hr.appendChild(el('th', '', c.label)); });
+      thead.appendChild(hr); table.appendChild(thead);
+      var tbody = el('tbody');
+      var real = engines.filter(function (e) { return e !== 'raw'; });
+      columns.forEach(function (c) {
+        var vals = real.map(function (e) { return c.get(normal[sc][e], sync[sc] ? sync[sc][e] : null); }).filter(function (v) { return v !== null && v !== undefined && isFinite(v); });
+        c.best = c.lower === undefined || !vals.length ? null : c.lower ? Math.min.apply(null, vals) : Math.max.apply(null, vals);
+        c.max = vals.length ? Math.max.apply(null, vals) : 0;
+      });
+      engines.forEach(function (e) {
+        var s = normal[sc][e];
+        if (!s) return;
+        var tr = el('tr');
+        tr.appendChild(el('td', '', names[e] || e));
+        columns.forEach(function (c) {
+          var v = c.get(s, sync[sc] ? sync[sc][e] : null);
+          var td = el('td', e !== 'raw' && c.best !== null && v === c.best ? 'best' : '');
+          if (c.bar && c.max > 0 && isFinite(v)) {
+            var cell = el('div', 'cell');
+            cell.appendChild(el('span', '', fmt(v, c.digits)));
+            var m = el('div', 'meter');
+            m.style.width = Math.max(4, Math.min(100, (v / c.max) * 100)) + '%';
+            cell.appendChild(m);
+            td.appendChild(cell);
+          } else td.textContent = fmt(v, c.digits);
+          tr.appendChild(td);
+        });
+        tbody.appendChild(tr);
+      });
+      table.appendChild(tbody); wrap.appendChild(table); block.appendChild(wrap); host.appendChild(block);
+    });
+    var first = normal[scenarios[0]][engines[0]];
+    var meta = data.meta || {};
+    var software = first && first.gl && /swiftshader|llvmpipe|software/i.test(first.gl.renderer || '');
+    document.getElementById('environment').textContent =
+      '量測環境：' + (first && first.gl ? first.gl.renderer : '未知') + '，' + (meta.viewport ? meta.viewport.width + '×' + meta.viewport.height : '') +
+      '，每組 ' + (meta.runs || 1) + ' 次取中位數。' +
+      (software ? '這是沒有顯示卡的軟體繪圖環境，FPS 和總時間反映的是 CPU 模擬繪圖的速度，不代表真實顯示卡上的表現；CPU 每幀時間和 WebGL 呼叫次數則不受影響，可以直接比較。想知道在你的裝置上的實際數字，請用上方的效能測試頁。' : '');
+    document.getElementById('results').hidden = false;
+  }
+
+  renderCards(null);
+  fetch('bench-summary.json').then(function (r) { return r.ok ? r.json() : null; }).then(function (data) {
+    if (!data) return;
+    renderCards(data);
+    renderTables(data);
+  }).catch(function () {});
+})();
+</script>
+</body>
+</html>
