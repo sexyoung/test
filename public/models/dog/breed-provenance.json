@@ -1,0 +1,74 @@
+[
+  {
+    "file": "german-shepherd.glb",
+    "author": "Quaternius",
+    "download": "https://static.poly.pizza/f11b6abc-28a4-4d23-bfce-679a8e2b9da1.glb",
+    "publisher": "https://poly.pizza/m/Hssa6NPc6W",
+    "creatorPack": "https://quaternius.com/packs/zombieapocalypsekit.html",
+    "licenseEvidence": "Creator pack CC0; Poly Pizza listing Creative Commons Attribution",
+    "sha256": "ca9925e5aeb95242dd77a7474f6b54db93ad5de4beb45de290024cf6447ccd65",
+    "triangles": 4898,
+    "skins": [
+      50
+    ],
+    "animationClips": [
+      "Attack",
+      "Death",
+      "Eating",
+      "Idle",
+      "Idle_2",
+      "Idle_2_HeadLow",
+      "Run",
+      "Run_Jump",
+      "Walk",
+      "HitReact_Right",
+      "HitReact_Left",
+      "AnimalArmature|Attack",
+      "AnimalArmature|Death",
+      "AnimalArmature|Eating",
+      "AnimalArmature|HitReact_Left",
+      "AnimalArmature|HitReact_Right",
+      "AnimalArmature|Idle",
+      "AnimalArmature|Idle_2",
+      "AnimalArmature|Idle_2_HeadLow",
+      "AnimalArmature|Run",
+      "AnimalArmature|Run_Jump",
+      "AnimalArmature|Walk"
+    ],
+    "retrieved": "2026-11-14",
+    "modified": false
+  },
+  {
+    "file": "pug.glb",
+    "author": "Quaternius",
+    "download": "https://static.poly.pizza/094335c0-632a-45f5-8583-27d5cab53b54.glb",
+    "publisher": "https://poly.pizza/m/1gXKv15ik8",
+    "creatorPack": "https://quaternius.com/packs/farmanimal.html",
+    "licenseEvidence": "CC0",
+    "sha256": "c71f7aa272d5947b5cd39b8fe5df44696391b0b19a74937ece40f91cd1f28cf5",
+    "triangles": 644,
+    "skins": [
+      24
+    ],
+    "animationClips": [
+      "Armature|Idle",
+      "Armature|Jump"
+    ],
+    "retrieved": "2026-11-14",
+    "modified": false
+  },
+  {
+    "file": "pomeranian.glb",
+    "author": "MarceloAMS / Marcelo Silva",
+    "publisher": "https://www.printables.com/model/36149-pomeranian-low-poly/files",
+    "licenseEvidence": "CC0 on author publishing page, verified in browser by root",
+    "sourceFile": "pomeraniam_lowpoly.stl",
+    "sourceSha256": "ac12de0ef29975051a469bd9d37303cc594faf461703af4e6ec3711e6f2312bb",
+    "sha256": "581d0ed424e431c60ee3016099cbacc6187041ba7e37ca620ef28c5124beee01",
+    "triangles": 500,
+    "skins": [],
+    "animationClips": [],
+    "changes": "No simplification; original triangle coordinates recentered, axes converted, units scaled; plain vertex color added",
+    "retrieved": "2026-11-14"
+  }
+]

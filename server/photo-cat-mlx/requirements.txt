@@ -1,0 +1,11 @@
+# MLX uses the Apple GPU through prebuilt Metal wheels; no PyTorch or CUDA.
+mlx>=0.31.2,<0.32
+numpy>=2.0
+pillow>=11
+opencv-python-headless>=4.10
+pyyaml>=6
+safetensors>=0.6
+scikit-image>=0.25
+trimesh>=4.9
+fast-simplification>=0.1
+rembg[cpu]>=2.0.65

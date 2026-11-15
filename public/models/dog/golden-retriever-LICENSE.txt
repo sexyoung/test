@@ -1,0 +1,9 @@
+Low Poly Golden Retriever — Beto
+Author: Agustin Arroyo / Flowalistik
+Source: https://www.printables.com/model/276-low-poly-golden-retriever-beto/files
+License chosen from original author Printables publication: Creative Commons Attribution-ShareAlike 4.0 International
+https://creativecommons.org/licenses/by-sa/4.0/
+
+All 444 STL triangles retained; axes and units changed; plain PBR coat material added. Adapter adds authored palette and face atlas, plus smooth coordinate-only deformation. No rig or generated motion.
+
+Adapted model is distributed under the same CC BY-SA 4.0 license. Preserve attribution and license when sharing derivative GLBs. Source STL hash: 9bce8f1c58a07013e8418d455c96ddfa6aa14cd45b8d2c0acf6769a417167e78

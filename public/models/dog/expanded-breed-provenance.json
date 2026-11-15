@@ -1,0 +1,173 @@
+{
+  "assets": [
+    {
+      "id": "poodle",
+      "file": "poodle.glb",
+      "title": "Poodle",
+      "author": "Poly by Google",
+      "source": "https://poly.pizza/m/eQmBaLcGbbE",
+      "download": "https://static.poly.pizza/421e8fcb-9053-40e6-9cc2-0919ca8bc8f8.glb",
+      "license": "CC-BY-3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+      "sha256": "5d0ed3d37389d2912935bc058808bbdf5062544b2fc34ce5be4e24f147cf645a",
+      "triangles": 852,
+      "joints": 0,
+      "animations": [],
+      "limitations": [
+        "Clipped poodle, static original; variety is not identified by the artist. 45 cm total height is an editorial miniature-sized display suggestion, not a breed standard."
+      ],
+      "displaySizeSuggestion": {
+        "axis": "y",
+        "cm": 45,
+        "basis": "Editorial total animal height including head and ears; no background or base. Not measured from photo, not shoulder height. Requires user confirmation for physical accuracy."
+      },
+      "shoulderReference": {
+        "source": "https://images.akc.org/pdf/breeds/standards/Poodle.pdf",
+        "measurement": "Highest point of shoulders to ground",
+        "toyCm": "<=25.4",
+        "miniatureCm": " >25.4 to 38.1",
+        "standardCm": ">38.1"
+      },
+      "orientation": {
+        "up": "+Y",
+        "forward": "+Z",
+        "adapterRotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "visualInspection": {
+        "original": true,
+        "adapted": true,
+        "baseOrScenery": false
+      },
+      "changes": "Original topology, rig and animation preserved. Downloaded GLB unchanged."
+    },
+    {
+      "id": "chihuahua",
+      "file": "chihuahua.glb",
+      "title": "Chihuahua",
+      "author": "Gobkit",
+      "source": "https://gobkit.com/freebies",
+      "download": "https://gobkit.com/freebies/animal008/Chihuahua.glb",
+      "license": "CC0-1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "sha256": "cb7cad58fb2fa6a528be18a34927fba300f158d95ecc549d0db864942b3aeb58",
+      "triangles": 484,
+      "joints": 16,
+      "animations": [
+        "idle",
+        "attack",
+        "dead",
+        "walk"
+      ],
+      "limitations": [
+        "Very exaggerated head, eyes and short legs. 25 cm total height is editorial; shoulder-to-total-height ratio is not anatomically representative."
+      ],
+      "displaySizeSuggestion": {
+        "axis": "y",
+        "cm": 25,
+        "basis": "Editorial total animal height including head and ears; no background or base. Not measured from photo, not shoulder height. Requires user confirmation for physical accuracy."
+      },
+      "shoulderReference": {
+        "source": "https://images.akc.org/pdf/breeds/standards/Chihuahua.pdf",
+        "measurement": "Standard specifies weight, not a shoulder-height range; use an individual measurement."
+      },
+      "orientation": {
+        "up": "+Y",
+        "forward": "+Z",
+        "adapterRotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "visualInspection": {
+        "original": true,
+        "adapted": true,
+        "baseOrScenery": false
+      },
+      "changes": "Original topology, rig and animation preserved. Downloaded GLB unchanged."
+    },
+    {
+      "id": "dachshund",
+      "file": "dachshund.glb",
+      "title": "Dashshund Dog",
+      "author": "spooneystone",
+      "source": "https://sketchfab.com/3d-models/dashshund-dog-cb0abb276cc247f095c0c527db987276",
+      "download": "https://huggingface.co/datasets/allenai/objaverse/resolve/main/glbs/000-102/cb0abb276cc247f095c0c527db987276.glb",
+      "license": "CC-BY-4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "sha256": "ce217a3856d31039b64766190687a094594edb0b6963116df121ec5f8caedc0d",
+      "triangles": 6374,
+      "joints": 72,
+      "animations": [
+        "Armature|Eating",
+        "Armature|Idle_1",
+        "Armature|Idle_2",
+        "Armature|Jump",
+        "Armature|PoseLib",
+        "Armature|Run",
+        "Armature|Walk"
+      ],
+      "limitations": [
+        "Short-legged long-bodied stylized dachshund. Seven original clips include PoseLib (not a locomotion loop). Source dark coat; palette repaint simplifies markings. 32 cm whole height is editorial."
+      ],
+      "displaySizeSuggestion": {
+        "axis": "y",
+        "cm": 32,
+        "basis": "Editorial total animal height including head and ears; no background or base. Not measured from photo, not shoulder height. Requires user confirmation for physical accuracy."
+      },
+      "shoulderReference": {
+        "source": "https://www.akc.org/dog-breeds/dachshund/",
+        "measurement": "Shoulder/withers height, excluding head and ears",
+        "standardCm": [
+          20.32,
+          22.86
+        ],
+        "miniatureCm": [
+          12.7,
+          15.24
+        ]
+      },
+      "orientation": {
+        "up": "+Y",
+        "forward": "+Z",
+        "adapterRotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "visualInspection": {
+        "original": true,
+        "adapted": true,
+        "baseOrScenery": false
+      },
+      "changes": "Original topology, rig and animation preserved. Legacy specularGlossiness material converted to metallicRoughness for current Three.js."
+    }
+  ],
+  "rejected": [
+    {
+      "name": "Golden Retriever Puppy / 3DAssets.dev",
+      "reason": "Publisher AI-generated candidate failed visual breed-quality inspection; not promoted."
+    },
+    {
+      "name": "Spaniel Sitting / 3DAssets.dev",
+      "reason": "Publisher AI-generated candidate insufficiently distinct; not promoted."
+    },
+    {
+      "name": "Flowalistik Beto",
+      "source": "https://pinshape.com/items/37371-low-poly-dog-beto",
+      "reason": "Original author lists CC BY-ND; unsuitable for requested remorph/repaint redistribution."
+    }
+  ],
+  "pending": [
+    {
+      "name": "Low poly Golden Retriever dog",
+      "uid": "efab2e3c19c24101bda9c1c3b1aeeb1c",
+      "reason": "Not present in public Objaverse GLB index; no authorized direct download obtained."
+    }
+  ]
+}

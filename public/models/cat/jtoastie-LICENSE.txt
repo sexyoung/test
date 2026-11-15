@@ -1,0 +1,8 @@
+Cat by J-Toastie
+Source: https://poly.pizza/m/DJ9rpAhrh3
+Download: https://static.poly.pizza/8b3fc8b2-7eae-4b19-8084-d2fbd725bc58.glb
+License: Creative Commons Attribution 3.0
+https://creativecommons.org/licenses/by/3.0/
+Original asset: 1,856 triangles, 22 skin joints, one IdleCat animation.
+Application changes: normalized display orientation/size; authored palette repaint and smooth shape adjustments; original source geometry indices, skin weights, inverse binds and animation tracks preserved. Material groups separate existing face/body triangles.
+The source has four positional components and 16 boundary edges; it is not claimed to be watertight.

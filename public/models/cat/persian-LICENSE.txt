@@ -1,0 +1,16 @@
+Persian Cat Princess Donut Low Poly — clean cat without glasses or crown
+Author: HOLOGRAMO
+Source: https://www.printables.com/model/1363957-persian-cat-princess-donut-low-poly-dungeon-crawler-carl/files
+License link and main label on the author page: Creative Commons Attribution 4.0
+https://creativecommons.org/licenses/by/4.0/
+The page also exposed an inconsistent accessible "Attribution ShareAlike" label;
+the explicit license link/label was BY4.0. Preserve this provenance and verify
+with the author before any broader redistribution if this ambiguity matters.
+Original downloaded file: persian-cat-donut-without-glasses-and-crown.stl
+Downloaded2026-11-14. 7646 original triangles retained without simplification.
+Conversion: coordinate axes rotated to Y-up/+Z-front, recentered, units scaled;
+plain vertex color added. Browser exports add authored palette face paint and
+smooth proportion adjustments. No original skeleton or animations exist.
+Credit "Persian Cat Princess Donut Low Poly" by HOLOGRAMO, source URL above,
+CC BY4.0, and identify these changes when redistributing adapted exports.
+Source SHA256: b4babbda7aefbaafda1048654b4f2ee6bcab79cf487150c1cb96279b150de75a

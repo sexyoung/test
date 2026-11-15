@@ -1,0 +1,50 @@
+{
+  "id": "golden-retriever",
+  "title": "Low Poly Golden Retriever \u2014 Beto",
+  "file": "golden-retriever.glb",
+  "author": "Agustin Arroyo / Flowalistik",
+  "source": "https://www.printables.com/model/276-low-poly-golden-retriever-beto/files",
+  "license": "CC-BY-SA-4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "licenseEvidence": "Root agent verified author original upload and CC BY-SA 4.0 linked license, remix and commercial permissions in official Printables browser. Alternative Pinshape listing is BY-ND; this distribution specifically uses the author Printables BY-SA offer.",
+  "sourceFile": "beto_lowpoly_flowalistik.stl",
+  "sourceSha256": "9bce8f1c58a07013e8418d455c96ddfa6aa14cd45b8d2c0acf6769a417167e78",
+  "sha256": "0f1d18d554a6209e401dc7af851be2bae00db2c7c3a7de52d076b577033a5744",
+  "triangles": 444,
+  "joints": 0,
+  "animations": [],
+  "orientation": {
+    "up": "+Y",
+    "forward": "+Z",
+    "conversion": "STL rotated X -90 degrees then Y 180 degrees, recentered to ground and multiplied by 0.01"
+  },
+  "displaySizeSuggestion": {
+    "axis": "y",
+    "cm": 75,
+    "basis": "Editorial sitting animal total height, including head, not shoulder height or photo measurement."
+  },
+  "shoulderReference": {
+    "source": "https://images.akc.org/pdf/breeds/standards/GoldenRetriever.pdf",
+    "measurement": "Standing withers height; not this sitting mesh total height",
+    "maleCm": [
+      58.42,
+      60.96
+    ],
+    "femaleCm": [
+      54.61,
+      57.15
+    ]
+  },
+  "changes": "All 444 STL triangles retained; axes and units changed; plain PBR coat material added. Adapter adds authored palette and face atlas, plus smooth coordinate-only deformation. No rig or generated motion.",
+  "limitations": [
+    "Static sitting pose.",
+    "Original two position-welded components and open boundaries retained; not a single watertight source.",
+    "Face detail limited to authored paint on existing facets."
+  ],
+  "derivativeLicense": "CC-BY-SA-4.0",
+  "visualInspection": {
+    "source": true,
+    "adapted": true,
+    "baseOrScenery": false
+  }
+}

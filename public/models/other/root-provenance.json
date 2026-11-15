@@ -1,0 +1,53 @@
+[
+  {
+    "id": "horse",
+    "source": "https://poly.pizza/m/qvTrSG9pZF",
+    "download": "https://static.poly.pizza/d37dbc87-ca61-4b2c-a2da-d2f0c4240bef.glb",
+    "author": "Quaternius",
+    "license": "CC0-1.0",
+    "triangles": 2182,
+    "bones": [
+      50
+    ],
+    "animations": [
+      "Attack_Headbutt",
+      "Attack_Kick",
+      "Death",
+      "Eating",
+      "Gallop_Jump",
+      "Gallop",
+      "Idle_HitReact_Left",
+      "Idle_HitReact_Right",
+      "Jump_toIdle",
+      "Walk",
+      "Idle_Headlow",
+      "Idle_2",
+      "Idle",
+      "AnimalArmature|Attack_Headbutt",
+      "AnimalArmature|Attack_Kick",
+      "AnimalArmature|Death",
+      "AnimalArmature|Eating",
+      "AnimalArmature|Gallop",
+      "AnimalArmature|Gallop_Jump",
+      "AnimalArmature|Idle",
+      "AnimalArmature|Idle_2",
+      "AnimalArmature|Idle_Headlow",
+      "AnimalArmature|Idle_HitReact_Left",
+      "AnimalArmature|Idle_HitReact_Right",
+      "AnimalArmature|Jump_toIdle",
+      "AnimalArmature|Walk"
+    ],
+    "sha256": "fae7a7ec91e0d6a33554efb896fac9c4e8c632644183bcb8cc962f673d3ce609"
+  },
+  {
+    "id": "parrot",
+    "source": "https://poly.pizza/m/dfNjMLtO0pd",
+    "download": "https://static.poly.pizza/9916df1b-dd5d-4072-bda3-c120ae6e5917.glb",
+    "author": "Poly by Google",
+    "license": "CC-BY-3.0",
+    "triangles": 651,
+    "bones": [],
+    "animations": [],
+    "sha256": "52c904f00dd236e181b3f037ee93a1209889ab6c7794b8c1095bb4ccff75a73b"
+  }
+]

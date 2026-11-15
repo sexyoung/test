@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 1,
+  "assets": [
+    {
+      "key": "siamese",
+      "title": "Cute Siamese Cat",
+      "author": "Fig Fogg",
+      "source": "https://sketchfab.com/3d-models/cute-siamese-cat-d6a186ef07a24abc8e0e97b924941cc8",
+      "license": "CC BY 4.0",
+      "licenseUrl": "http://creativecommons.org/licenses/by/4.0/",
+      "download": "https://huggingface.co/datasets/allenai/objaverse/resolve/main/glbs/000-080/d6a186ef07a24abc8e0e97b924941cc8.glb",
+      "original": "siamese-original.glb",
+      "derived": "siamese-lowpoly.glb",
+      "sourceSha256": "b21740f09fd6f81f6e6214481eb70aa79f4ad2d55590db729f423177174a7376",
+      "derivedSha256": "4f60bb8ef0ae8e631c15277ab9d58dfbf075797397a2703e108abcdacd37d4bb",
+      "geometry": {
+        "sourceTriangles": 37888,
+        "triangles": 3999,
+        "vertices": 2221,
+        "watertight": false,
+        "components": 17,
+        "bounds": [
+          [
+            -0.4287184330933098,
+            -0.0004600982989270636,
+            -0.9156426863411812
+          ],
+          [
+            0.4300658698043021,
+            2.3991170166419487,
+            0.9149951122484115
+          ]
+        ]
+      },
+      "sourceComponents": 23,
+      "sourceWatertight": false,
+      "rigJoints": 0,
+      "animations": [],
+      "changes": [
+        "Quadric edge-collapse simplification 37888 to3999 triangles",
+        "Converted Z-up/+X forward to Y-up/+Z forward; normalized 2.4 arbitrary display units",
+        "Removed defective original materials; authored palette coloring/graphic eyes and nose; no photo pixels embedded"
+      ],
+      "anatomy": "Independent authored Siamese sitting cat; unusually stylized tall body and very large ears, not breed-perfect anatomy.",
+      "adapter": "demos/photo-cat/template-siamese-cat.js",
+      "limits": [
+        "Static; no skeleton or animations",
+        "Original and derivative are not watertight and have disconnected whisker/detail pieces",
+        "Thin paws and whiskers limited by source anatomy; no claim of preserved original topology"
+      ],
+      "sizeGuidance": {
+        "sourceUnits": "unknown",
+        "meshHeightIsCentimeters": false,
+        "measurement": "Sitting total height includes ears; not a valid shoulder-height proxy. Physical shoulder/body length must be supplied separately from real pet measurement.",
+        "suggestedDesignOnlyCm": {
+          "standingShoulderHeight": 25,
+          "noseToTailBaseLength": 40
+        },
+        "designDefaultNotBreedStandard": true
+      }
+    },
+    {
+      "key": "sphynx",
+      "title": "Sphynx Cat Sculpt",
+      "author": "jakeblakeley",
+      "source": "https://sketchfab.com/3d-models/sphynx-cat-sculpt-8dd24cd03aa0404bb5f043da29cdef79",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "download": "https://huggingface.co/datasets/allenai/objaverse/resolve/main/glbs/000-007/8dd24cd03aa0404bb5f043da29cdef79.glb",
+      "original": "sphynx-original.glb",
+      "derived": "sphynx-lowpoly.glb",
+      "sourceSha256": "77add575a09e6e3d315dd792d6955792625d8eee70178726baae3ebf8aed0f84",
+      "derivedSha256": "b09db0189447d951a5d371cf85945ec0ad4f49ac20916418583650c490e757f5",
+      "sourceTriangles": 352448,
+      "triangles": 4818,
+      "geometry": [
+        {
+          "name": "BAKETOOL_Claw_Bottom_Claws.004",
+          "original": 2016,
+          "triangles": 200,
+          "bounds": [
+            [
+              -0.24733772141568813,
+              -0.003348446749853711,
+              -0.6433180525163174
+            ],
+            [
+              0.4610674392872965,
+              0.36381896220999577,
+              1.1933824495231584
+            ]
+          ],
+          "watertight": false,
+          "components": 24
+        },
+        {
+          "name": "Skin",
+          "original": 344928,
+          "triangles": 4299,
+          "bounds": [
+            [
+              -0.4025924498703655,
+              -0.010681909584364142,
+              -0.8186122696719832
+            ],
+            [
+              0.46644610173505435,
+              1.5126435074651645,
+              1.2068028366252002
+            ]
+          ],
+          "watertight": false,
+          "components": 13
+        },
+        {
+          "name": "EyeIris",
+          "original": 768,
+          "triangles": 160,
+          "bounds": [
+            [
+              -0.2951204540518182,
+              1.2049007441414883,
+              1.0362080930558193
+            ],
+            [
+              -0.0647320024270337,
+              1.2652098867971873,
+              1.0993557536007703
+            ]
+          ],
+          "watertight": false,
+          "components": 2
+        },
+        {
+          "name": "BAKETOOL_Sclera_Sclera",
+          "original": 2304,
+          "triangles": 159,
+          "bounds": [
+            [
+              -0.30530085552266467,
+              1.1607395618896954,
+              0.9606605571043535
+            ],
+            [
+              -0.032077358072477524,
+              1.2758114478619498,
+              1.0963315421789819
+            ]
+          ],
+          "watertight": false,
+          "components": 12
+        }
+      ],
+      "rigJoints": 0,
+      "animations": [],
+      "changes": [
+        "Merged skin primitives by position and quadric-decimated to4299 skin triangles",
+        "Kept decimated iris/sclera/claws, removed transparent cornea overlay",
+        "Authored palette only; no photo texture; smooth source-coordinate shape changes"
+      ],
+      "anatomy": "Independent full-body hairless Sphynx, raised front paw, broad chest and large ears.",
+      "adapter": "demos/photo-cat/template-sphynx-cat.js",
+      "limits": [
+        "Static raised-paw pose; no rig or clips",
+        "Source and derived surfaces are not watertight",
+        "Decimation reduces skin folds; original topology is not preserved",
+        "Fur-length unsupported because hairless base"
+      ],
+      "sizeGuidance": {
+        "sourceUnits": "unknown",
+        "meshHeightIsCentimeters": false,
+        "measurement": "Shoulder height: ground to withers, excluding ears; use three planted paws as ground plane. Head-body length excludes raised curled tail. Input actual measurements independently.",
+        "suggestedDesignOnlyCm": {
+          "standingShoulderHeight": 24,
+          "noseToTailBaseLength": 38
+        },
+        "designDefaultNotBreedStandard": true
+      }
+    }
+  ],
+  "rejected": [
+    {
+      "name": "Sphynx for AR",
+      "reason": "Egyptian statue, not feline anatomy"
+    },
+    {
+      "name": "Sphynx Low / Sphynx Cat",
+      "reason": "Head or head-neck bust; lacks pet full body"
+    },
+    {
+      "name": "Scottish Fold Cat AJPW",
+      "reason": "Appears extracted franchise game asset; insufficient ownership assurance"
+    }
+  ]
+}

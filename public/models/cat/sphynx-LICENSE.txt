@@ -1,0 +1,5 @@
+Sphynx Cat Sculpt by jakeblakeley (https://sketchfab.com/jakely)
+https://sketchfab.com/3d-models/sphynx-cat-sculpt-8dd24cd03aa0404bb5f043da29cdef79
+CC BY4.0 https://creativecommons.org/licenses/by/4.0/
+Downloaded via public Objaverse redistribution. Changes: skin primitive merging, quadric decimation, transparent cornea removal, palette repaint, profile deformation.
+Static source with no rig or animation.

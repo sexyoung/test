@@ -1,0 +1,82 @@
+{
+  "assets": [
+    {
+      "file": "budgie.glb",
+      "author": "Gobkit",
+      "source": "https://gobkit.com/freebies",
+      "download": "https://gobkit.com/freebies/animal011/Budgie.glb",
+      "license": "CC0-1.0",
+      "licenseURL": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "aiUsed": null,
+      "sha256": "2f9ad7099ab162add0fe2b2cde0358c30cf7bc331e11c80f342ff7b1be4e018f",
+      "triangles": 830,
+      "joints": 16,
+      "animations": [
+        "idle",
+        "attack",
+        "dead",
+        "walk"
+      ],
+      "visualInspection": true,
+      "notes": "Very stylized round-bodied bird; not realistic budgie proportions."
+    },
+    {
+      "file": "goldfish.glb",
+      "author": "Quaternius",
+      "source": "https://quaternius.com/packs/cutefish.html",
+      "download": "https://raw.githubusercontent.com/trebeljahr/quaternius-showcase/main/public/glb/cute_fish_pack/Goldfish.glb",
+      "license": "CC0-1.0",
+      "licenseURL": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "aiUsed": false,
+      "sha256": "028b880bf2df64237748d1173d6df1eaa1b23b3c01d35e936c3b76cf032cb35b",
+      "triangles": 1590,
+      "joints": 12,
+      "animations": [
+        "Fish_Armature|Attack",
+        "Fish_Armature|Death",
+        "Fish_Armature|Out_Of_Water",
+        "Fish_Armature|Swimming_Fast",
+        "Fish_Armature|Swimming_Impulse",
+        "Fish_Armature|Swimming_Normal"
+      ],
+      "visualInspection": true,
+      "notes": "Stylized goldfish with broad head, fins and forked tail. Mirror conversion retains source animation."
+    },
+    {
+      "file": "cockatiel-static-ai.glb",
+      "author": "3DAssets.dev",
+      "source": "https://3dassets.dev/assets/pets-and-companions-hd-cockatiel-f4a552b1",
+      "download": "https://cdn.3dassets.dev/assets/28161/v1/model.glb",
+      "license": "CC0-1.0",
+      "licenseURL": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "aiUsed": true,
+      "sha256": "37dd1716342c30fce04fb2f1394f9f0ad67e785723d74dbd2434569e5cfc8691",
+      "triangles": 6464,
+      "joints": 0,
+      "animations": [],
+      "visualInspection": true,
+      "notes": "Static stylized cockatiel; crest and orange cheek visible. No rig. Existing source palette/geometry preserved."
+    },
+    {
+      "file": "red-eared-slider-static-ai.glb",
+      "author": "3DAssets.dev",
+      "source": "https://3dassets.dev/assets/reptiles-amphibians-and-minibeasts-red-eared-slider-on-b9a994a9",
+      "download": "https://cdn.3dassets.dev/assets/22444/v1/model.glb",
+      "license": "CC0-1.0",
+      "licenseURL": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "aiUsed": true,
+      "sha256": "9fbc4c83f8f54330d58c7b6cacfa21383e4d5932b1933e48d1f3feb784171d5f",
+      "triangles": 2976,
+      "joints": 0,
+      "animations": [],
+      "visualInspection": true,
+      "notes": "Static highly stylized turtle on log. Legs are chunky and shell pattern abstract. Not a substitute for Gary terrestrial turtle; includes source log."
+    }
+  ],
+  "licenseEvidence": {
+    "Gobkit": "Official freebies page and /api/free manifest state CC0 1.0.",
+    "Quaternius": "Official Animated Cute Fish pack states CC0, personal and commercial use.",
+    "3DAssets.dev": "Individual asset pages state CC0 1.0 Universal and disclose AI usage. Static asset geometries have been rendered and inspected."
+  },
+  "unresolved": "No suitable terrestrial turtle/tortoise GLB verified; Gary 136 must not automatically use red-eared slider anatomy."
+}

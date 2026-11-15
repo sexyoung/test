@@ -1,0 +1,74 @@
+Quaternius dog templates — per-file license and provenance
+
+Author: Quaternius
+Original pack: Ultimate Animated Animal Pack (July 2021)
+Creator page and license declaration:
+https://quaternius.com/packs/ultimateanimatedanimals.html
+License: https://creativecommons.org/publicdomain/zero/1.0/
+Legal text: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+
+The creator explicitly marks this pack CC0 and free for personal and commercial use.
+No attribution is required by CC0; creator credit is retained here for provenance.
+
+Downloaded 2026-11-14. The creator's linked Google Drive folder listed ShibaInu.gltf
+and Husky.gltf but returned a quota-exceeded page for the attempted Shiba download.
+The binary GLB copies therefore came from the public redistribution mirror below:
+https://github.com/trebeljahr/quaternius-showcase
+Mirror license mapping: https://github.com/trebeljahr/quaternius-showcase/blob/main/LICENSES.md
+Mirror tree commit: 0128ca510d653bb04d6d1e4885bd8890b5050b4f
+
+shiba-inu.glb
+Source: https://raw.githubusercontent.com/trebeljahr/quaternius-showcase/0128ca510d653bb04d6d1e4885bd8890b5050b4f/public/glb/animals_pack/ShibaInu.glb
+SHA256: 4c8d4d9361a3abd4ef08a9a09aeabf1eb5d4cbddfd4ce271aacf64a254f1dbc1
+Triangles: 1950; skin joints: 46; animation clips: 12.
+Unmodified downloaded binary. No generated or replacement geometry.
+Position-welded inspection of all material primitives: 1 connected component, watertight.
+Original seam vertices are retained to preserve flat normals, material boundaries and skin data.
+
+husky.glb
+Source: https://raw.githubusercontent.com/trebeljahr/quaternius-showcase/0128ca510d653bb04d6d1e4885bd8890b5050b4f/public/glb/animals_pack/Husky.glb
+SHA256: b2cb13fa470367cdfa3fb90184f13ccb65f256e009bd4dbc26121f0c541d0cda
+Triangles: 1920; skin joints: 49; animation clips: 12.
+Unmodified downloaded binary. No generated or replacement geometry.
+Position-welded inspection of all material primitives: 1 connected component, watertight.
+Original seam vertices are retained to preserve flat normals, material boundaries and skin data.
+
+
+Additional breed-specific templates downloaded 2026-11-14
+========================================================
+
+pug.glb — "Pug" by Quaternius
+Publisher: https://poly.pizza/m/1gXKv15ik8
+Creator pack: https://quaternius.com/packs/farmanimal.html
+License: CC0 1.0 Universal https://creativecommons.org/publicdomain/zero/1.0/
+Both publisher and creator pack explicitly declare CC0.
+644 triangles;24 skin joints; clips Armature|Idle and Armature|Jump.
+No walk/run animation is supplied. One position-welded connected, watertight surface.
+
+ german-shepherd.glb — "German Shepard" by Quaternius
+Publisher: https://poly.pizza/m/Hssa6NPc6W
+Creator pack: https://quaternius.com/packs/zombieapocalypsekit.html
+Publisher license: CC Attribution3.0 https://creativecommons.org/licenses/by/3.0/
+Creator pack currently declares CC0. Retain the stricter publisher attribution:
+"German Shepard" by Quaternius, https://poly.pizza/m/Hssa6NPc6W,
+licensed CC BY3.0 https://creativecommons.org/licenses/by/3.0/ .
+This downloaded binary is unmodified. Photo-adapted exports must identify changes.
+4898 triangles;50 skin joints;23 clips including Run/Walk/Idle.
+The author's source includes backpack/scarf accessories and separate components.
+It is not a single closed surface: source inspection reports36 welded components,
+112 boundary edges and6 nonmanifold edges. Do not represent accessories as body seams.
+
+These are distinct authored breed models, not renamed copies of the Shiba template.
+
+
+pomeranian.glb — Pomeranian Low Poly by MarceloAMS / Marcelo Silva
+Source: https://www.printables.com/model/36149-pomeranian-low-poly/files
+Related author source: https://www.thingiverse.com/thing:3305929
+License: CC0 1.0 Universal https://creativecommons.org/publicdomain/zero/1.0/
+Creator credits the MaryL model https://www.thingiverse.com/thing:2255339 .
+Downloaded source: pomeraniam_lowpoly.stl, 500 triangles.
+Conversion preserves every original triangle without decimation; coordinate
+axes permuted to Y-up/+Z-front, centered, scaled from millimetres to metres.
+A plain vertex color is added. There is no source skeleton or animation.
+Photo palette/shape changes are performed separately by the browser adapter.
+Source SHA256: ac12de0ef29975051a469bd9d37303cc594faf461703af4e6ec3711e6f2312bb

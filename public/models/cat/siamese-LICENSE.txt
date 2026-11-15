@@ -1,0 +1,7 @@
+Cute Siamese Cat by Fig Fogg
+https://sketchfab.com/3d-models/cute-siamese-cat-d6a186ef07a24abc8e0e97b924941cc8
+Creative Commons Attribution 4.0
+https://creativecommons.org/licenses/by/4.0/
+Downloaded via public Objaverse redistribution.
+Changes: quadric decimation, axis conversion, normalization, authored palette repaint and profile deformation.
+Original has no skeleton or animations.

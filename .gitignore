@@ -3,3 +3,4 @@ dist/
 bench/.build/
 bench/.lock/
 bench/out/
+*.blend[0-9]

@@ -1,0 +1,32 @@
+{
+  "version": "cat-ear-rig-v1",
+  "authoringFile": "runner-ear-controls.blend",
+  "runtimeFile": "runner-base.glb",
+  "authoringSHA256": "71b3e3c756d54b819cd9f8167bf76b18e00659a78129aa0b5c5865871cf17816",
+  "runtimeSHA256": "cac3e4f460719d2b0c3f27d86490c0addc7e8743039479983fb65241c4bd4abd",
+  "bones": 53,
+  "durationSeconds": 1.5,
+  "earPresets": {
+    "neutral": [
+      0,
+      0,
+      0
+    ],
+    "airplane": [
+      55,
+      -10,
+      18
+    ],
+    "forward": [
+      5,
+      25,
+      0
+    ],
+    "back": [
+      20,
+      -35,
+      10
+    ]
+  },
+  "notes": "Blender retains six editable ear drivers. GLB contains their neutral run bake and all ear joints; glTF does not store Blender drivers."
+}

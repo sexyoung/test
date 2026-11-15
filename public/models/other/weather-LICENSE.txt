@@ -1,0 +1,16 @@
+These four assets are published under CC0 1.0 Universal.
+https://creativecommons.org/publicdomain/zero/1.0/
+
+budgie.glb — Gobkit
+https://gobkit.com/freebies
+
+goldfish.glb — Quaternius
+https://quaternius.com/packs/cutefish.html
+
+cockatiel-static-ai.glb — 3DAssets.dev
+https://3dassets.dev/assets/pets-and-companions-hd-cockatiel-f4a552b1
+
+red-eared-slider-static-ai.glb — 3DAssets.dev
+https://3dassets.dev/assets/reptiles-amphibians-and-minibeasts-red-eared-slider-on-b9a994a9
+
+See weather-provenance.json for exact download URLs, hashes, rig status and AI-source disclosures. No downloaded executable scripts were run.

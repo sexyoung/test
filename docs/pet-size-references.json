@@ -1,0 +1,118 @@
+{
+  "checked": "2026-11-14",
+  "contract": {
+    "outputUnit": "meter",
+    "userInputUnit": "centimeter",
+    "supportedMeasurements": {
+      "model-full-height": "Bind-pose vertical bounding extent; includes ears, raised tail and all retained source geometry. This is not withers height.",
+      "model-full-depth": "Front-to-back axis-aligned bounding extent; includes tail. This is not nose-to-rump or curved body length.",
+      "model-full-width": "Left-to-right maximum bounding extent.",
+      "model-longest-extent": "Maximum of the three axis-aligned bounding dimensions."
+    },
+    "pose": "Capture all corrected adapter local transforms BEFORE starting animation. Restore that exact rest pose on the export clone; raw inverse-bind reconstruction is only a fallback for unmodified source rigs. Static assets retain source pose. Never reset the live preview.",
+    "defaultProvenance": "editorial-preview-estimate; not inferred from a photograph and not a breed-standard measurement",
+    "customProvenance": "user-entered measurement with exactly matching measurement kind",
+    "unsupported": "withers height, nose-to-rump length, shell length, wing span or other landmark measures require per-base verified anatomical landmarks; do not convert using a fixed multiplier.",
+    "catalog": "Use the same physical-size module and measurementKind as export. Normalize source axes explicitly before selecting a preset axis. Store measured/estimated separately. Static sitting models must be labeled static source pose; cannot be equated with standing shoulder height.",
+    "references": "Breed reference ranges are comparative anatomical information only; they do not set whole-model dimensions.",
+    "cloneProtocol": "captureRestPose(root) once after normalization; copyRestPose(source,clone(source)) when cloning an already-calibrated catalog root; applyPhysicalSize(exportClone,{axis,cm,estimated,measurementKind}). Internal snapshot is removed from export extras."
+  },
+  "references": [
+    {
+      "breed": "Shiba",
+      "source": "https://fci.be/Nomenclature/Standards/257g05-en.pdf",
+      "authority": "FCI 257",
+      "measurement": "height-at-withers",
+      "maleCm": [
+        38,
+        41
+      ],
+      "femaleCm": [
+        35,
+        38
+      ],
+      "nominalMaleCm": 39.5,
+      "nominalFemaleCm": 36.5,
+      "toleranceCm": 1.5,
+      "bodyLengthRelation": "Withers height : body length = 10 : 11; excludes head/tail bbox interpretation",
+      "fullModelHeightCm": null
+    },
+    {
+      "breed": "German Shepherd Dog",
+      "source": "https://www.fci.be/nomenclature/standards/166g01-en.pdf",
+      "authority": "FCI 166",
+      "measurement": "height-at-withers",
+      "maleCm": [
+        60,
+        65
+      ],
+      "femaleCm": [
+        55,
+        60
+      ],
+      "bodyLengthRelation": "Trunk length exceeds withers height by about 10–17%; not total nose-to-tail extent",
+      "fullModelHeightCm": null
+    },
+    {
+      "breed": "Siberian Husky",
+      "source": "https://www.fci.be/Nomenclature/Standards/270g05-en.pdf",
+      "authority": "FCI 270",
+      "measurement": "height-at-withers",
+      "maleCm": [
+        53.5,
+        60
+      ],
+      "femaleCm": [
+        50.5,
+        56
+      ],
+      "bodyLengthRelation": "Point of shoulder to rear point of croup is slightly longer than withers height",
+      "fullModelHeightCm": null
+    },
+    {
+      "breed": "Pomeranian",
+      "source": "https://www.fci.be/nomenclature/standards/097g05-fr.pdf",
+      "authority": "FCI 97",
+      "measurement": "height-at-withers",
+      "rangeCm": [
+        18,
+        24
+      ],
+      "nominalCm": 21,
+      "toleranceCm": 3,
+      "fullModelHeightCm": null
+    },
+    {
+      "breed": "Pug",
+      "source": "https://www.fci.be/Nomenclature/Standards/253g09-en.pdf",
+      "authority": "FCI 253",
+      "measurement": "qualitative-body-proportions",
+      "note": "Square, compact body proportions. Do not infer a full-height centimeter default from this description or from a weight standard.",
+      "fullModelHeightCm": null
+    },
+    {
+      "breed": "Persian",
+      "source": "https://cfa.org/breed/persian/",
+      "authority": "CFA",
+      "measurement": "qualitative-body-type",
+      "note": "Substantial bone and rounded head/body impression; source does not provide a numeric full-model height. Fur changes apparent size.",
+      "fullModelHeightCm": null
+    },
+    {
+      "breed": "British Shorthair",
+      "source": "https://cfa.org/breed/british-shorthair/",
+      "authority": "CFA",
+      "measurement": "qualitative-body-type",
+      "note": "Compact, powerful, medium-to-large body with short-to-medium strong legs. No numeric full-height default is justified.",
+      "fullModelHeightCm": null
+    },
+    {
+      "breed": "Maine Coon",
+      "source": "https://tica.org/breed/maine-coon/",
+      "authority": "TICA",
+      "measurement": "qualitative-body-type",
+      "note": "Large, rectangular, substantial body and long tail. Weight information is not a geometric height or length conversion; no full-height centimeter value is supplied here.",
+      "fullModelHeightCm": null
+    }
+  ]
+}

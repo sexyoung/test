@@ -1,0 +1,129 @@
+{
+  "inspected": "2026-11-14",
+  "note": "Downloaded original source candidates only. No photo adapter or physical-size calibration is included. Preserve required author attribution and license when redistributed.",
+  "models": [
+    {
+      "name": "rat",
+      "source": "https://poly.pizza/m/iltq5bVNaV",
+      "download": "https://static.poly.pizza/64cb7150-8031-44ab-a0c9-e1529a572b23.glb",
+      "author": "Quaternius",
+      "license": "CC0",
+      "sha256": "68f67077981102e957059fd00aaf3799e6867c269de900bd52c9f12cec1d5f56",
+      "triangles": 4004,
+      "meshes": 2,
+      "bones": 31,
+      "clips": [
+        "RatArmature|Rat_Attack",
+        "RatArmature|Rat_Death",
+        "RatArmature|Rat_Idle",
+        "RatArmature|Rat_Jump",
+        "RatArmature|Rat_Run",
+        "RatArmature|Rat_Walk"
+      ],
+      "dimensions": [
+        1.5100313360228526,
+        2.2442489262579963,
+        6.807688416132802
+      ],
+      "verdict": "recommended",
+      "visualNotes": "Anatomical quadruped rat with ears and long tail; six original skeletal clips.",
+      "licenseURL": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "file": "rat.glb",
+      "status": "source-candidate-not-photo-ready",
+      "adaptedForPhoto": false,
+      "physicalScale": {
+        "unit": "unknown-source-units",
+        "measuredFromPet": false,
+        "note": "Original asset dimensions are arbitrary; real-world pet size requires explicit user input. Do not infer centimeters from source bounds."
+      },
+      "quality": "anatomy-candidate"
+    },
+    {
+      "name": "rabbit-natural",
+      "source": "https://poly.pizza/m/3vvONbRCuEF",
+      "download": "https://static.poly.pizza/416343ff-72b0-4dd8-884b-55c6eb019e85.glb",
+      "author": "Poly by Google",
+      "license": "CC BY 3.0",
+      "sha256": "acbfdbbb19c002797926652965d8372f4baae8d7c48de5cf86851b84ed27e651",
+      "triangles": 954,
+      "meshes": 1,
+      "bones": 0,
+      "clips": [],
+      "dimensions": [
+        3.226744055747986,
+        7.629899978637695,
+        7.13437294960022
+      ],
+      "verdict": "recommended-static",
+      "visualNotes": "Recognizable crouched rabbit with long upright ears and haunches; no skeleton or clips; original fur texture is source artwork.",
+      "licenseURL": "https://creativecommons.org/licenses/by/3.0/",
+      "file": "rabbit.glb",
+      "status": "source-candidate-not-photo-ready",
+      "adaptedForPhoto": false,
+      "physicalScale": {
+        "unit": "unknown-source-units",
+        "measuredFromPet": false,
+        "note": "Original asset dimensions are arbitrary; real-world pet size requires explicit user input. Do not infer centimeters from source bounds."
+      },
+      "quality": "anatomy-candidate"
+    },
+    {
+      "name": "hedgehog-natural",
+      "source": "https://poly.pizza/m/8UNni5IvK_c",
+      "download": "https://static.poly.pizza/404b3597-55fd-48b1-a4da-98c805641639.glb",
+      "author": "Poly by Google",
+      "license": "CC BY 3.0",
+      "sha256": "b38f52270821b0f363bc811c306ad98d0b09b9067e794965cc154364d9ff1625",
+      "triangles": 376,
+      "meshes": 1,
+      "bones": 0,
+      "clips": [],
+      "dimensions": [
+        54.99537658691406,
+        61.89950180053711,
+        118.66097259521484
+      ],
+      "verdict": "candidate-static",
+      "visualNotes": "Natural body silhouette and pointed face; 376-face back is simplified rather than individual quills; no rig.",
+      "licenseURL": "https://creativecommons.org/licenses/by/3.0/",
+      "file": "hedgehog.glb",
+      "status": "source-candidate-not-photo-ready",
+      "adaptedForPhoto": false,
+      "physicalScale": {
+        "unit": "unknown-source-units",
+        "measuredFromPet": false,
+        "note": "Original asset dimensions are arbitrary; real-world pet size requires explicit user input. Do not infer centimeters from source bounds."
+      },
+      "quality": "coarse-candidate"
+    },
+    {
+      "name": "hamster",
+      "source": "https://poly.pizza/m/3YtzEQ5TVUP",
+      "download": "https://static.poly.pizza/45725eb5-4503-40e8-96e9-a7778bcdb392.glb",
+      "author": "Poly by Google",
+      "license": "CC BY 3.0",
+      "sha256": "24ce9c35cb7f5c696f139a35efb5b34247bc73b7a0b7d7035305db76f2aa53c2",
+      "triangles": 488,
+      "meshes": 1,
+      "bones": 0,
+      "clips": [],
+      "dimensions": [
+        36.88821029663086,
+        37.69045639038086,
+        111.66557312011719
+      ],
+      "verdict": "candidate",
+      "visualNotes": "Static compact low-poly hamster with no long tail, but body is elongated and face very coarse; weaker photo likeness.",
+      "licenseURL": "https://creativecommons.org/licenses/by/3.0/",
+      "file": "hamster.glb",
+      "status": "source-candidate-not-photo-ready",
+      "adaptedForPhoto": false,
+      "physicalScale": {
+        "unit": "unknown-source-units",
+        "measuredFromPet": false,
+        "note": "Original asset dimensions are arbitrary; real-world pet size requires explicit user input. Do not infer centimeters from source bounds."
+      },
+      "quality": "coarse-candidate"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>寵物基底 · 尺寸對照</title><link rel="stylesheet" href="./catalog.css"></head>
+<body><header><a href="./index.html">← 照片模型工作室</a><h1>基底與尺寸對照</h1><button id="fit">拉近檢查</button><button id="common">共同尺度</button></header>
+<main><div id="viewport" aria-label="兩隻動物的共同公尺尺度預覽"></div><div class="controls">
+<section><h2>左側模型</h2><label>基底<select id="left"></select></label><label id="leftMeasure">尺寸（公分）<input id="leftSize" type="number" min="1" max="1000" step="1"></label><p id="leftInfo"></p><button id="leftExport" disabled>下載左側尺寸 GLB</button></section>
+<section><h2>右側模型</h2><label>基底<select id="right"></select></label><label id="rightMeasure">尺寸（公分）<input id="rightSize" type="number" min="1" max="1000" step="1"></label><p id="rightInfo"></p><button id="rightExport" disabled>下載右側尺寸 GLB</button></section>
+</div><p class="note">地面小格為 10 公分。預設尺寸是可修改的展示估計，並非照片量測或品種標準；全高含耳朵，全長含尾巴。此頁展示下載的原始基底，尚待適配的模型不代表已支援照片生成。</p><p id="status" role="status"></p></main><script type="module" src="./catalog.js"></script></body></html>

@@ -1,0 +1,63 @@
+[
+  {
+    "name": "ferret",
+    "page": "https://poly.pizza/m/4I1SBFHWuSo",
+    "download": "https://static.poly.pizza/5e0c67f1-6c78-42f7-a132-bf4f0c7f8c2d.glb",
+    "triangles": 794,
+    "skins": [],
+    "clips": [],
+    "materials": [
+      "Ferret_Mat"
+    ],
+    "id": "ferret",
+    "source": "https://poly.pizza/m/4I1SBFHWuSo",
+    "author": "Poly by Google",
+    "license": "CC-BY-3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+    "file": "ferret.glb",
+    "bones": [],
+    "animations": [],
+    "sha256": "8809d653105d12589af7a59049e1113c6a4403d4ddacd89eabea7729aa0bea4f",
+    "visualVerification": "Rendered and inspected: actual anatomical ferret with long torso, short legs, masked face and tail.",
+    "rigged": false
+  },
+  {
+    "name": "hen-google",
+    "page": "https://poly.pizza/m/8Unya0rw9tR",
+    "download": "https://static.poly.pizza/622d2b3d-e280-48fd-9a82-b0e60443def5.glb",
+    "triangles": 592,
+    "skins": [],
+    "clips": [],
+    "materials": [
+      "lambert2SG"
+    ],
+    "id": "chicken",
+    "source": "https://poly.pizza/m/8Unya0rw9tR",
+    "author": "Poly by Google",
+    "license": "CC-BY-3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+    "file": "chicken.glb",
+    "bones": [],
+    "animations": [],
+    "sha256": "6d6f0514bc020ce6afc33ebbc47d33bc2b1308b643062ff15f60c3918ffa5585",
+    "visualVerification": "Rendered and inspected: actual anatomical hen with separate head/neck, body, wings, tail and feet; replaces rejected head-only blob chicken.",
+    "rigged": false
+  },
+  {
+    "id": "guinea-pig",
+    "file": "guinea-pig.glb",
+    "name": "guinea pig",
+    "author": "packer",
+    "source": "https://sketchfab.com/3d-models/guinea-pig-cc4990e30b994b85b57b9d5e56f0e8e6",
+    "download": "https://huggingface.co/datasets/allenai/objaverse/resolve/main/glbs/000-079/cc4990e30b994b85b57b9d5e56f0e8e6.glb",
+    "license": "CC-BY-4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseEvidence": "Original Sketchfab API confirms CC Attribution and downloadable. GLB asset.extras embeds author, source and CC-BY-4.0 license. Public Objaverse mirror exact 36544-byte GLB.",
+    "triangles": 416,
+    "bones": [],
+    "animations": [],
+    "rigged": false,
+    "visualVerification": "Rendered and inspected: short-legged rounded guinea-pig body, small rounded ears, blunt muzzle and no long tail. Very coarse faceted geometry.",
+    "sha256": "732e5fca7a2e2ea5163dc6c0b1aa5a80ed0a8387707b076f5b384c1ca119b97c"
+  }
+]

@@ -130,7 +130,7 @@ function renderForm() {
   const color = document.createElement('input');
   Object.assign(color, { id: 'color', type: 'color', value: params.color });
   color.addEventListener('input', () => { params.color = color.value; apply(); });
-  field('毛色', 'color').append(color);
+  field('全身毛色', 'color').append(color);
   const surface = document.createElement('select'); surface.id = 'surface';
   for (const [value, text] of [['smooth', '平滑表面'], ['faceted', '多邊形切面']]) surface.add(new Option(text, value));
   surface.value = params.surface;
@@ -237,7 +237,7 @@ async function selectModel(id) {
     if (version !== loadVersion) { next.dispose(); return; }
     cat?.dispose(); cat = next; params = next.params;
     scene.add(cat.root); apply(); renderForm(); showProfile();
-    controls.target.set(0, id === 'detailed' ? 0.24 : 0.16, 0);
+    controls.target.set(0, 0.16, 0);
     controls.update(); setBusy(false);
     status.textContent = cat.profile.animated
       ? '拖曳旋轉視角；暫停或拖曳時間軸，查看每個姿勢。'

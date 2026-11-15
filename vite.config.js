@@ -5,7 +5,8 @@ import { resolve } from 'node:path';
 // Multi-page site: the landing page, the in-browser benchmark and one page per demo.
 const root = import.meta.dirname;
 const pages = { main: 'index.html', bench: 'bench.html' };
-for (const engine of ['three', 'babylon', 'playcanvas', 'raw', 'pet']) {
+pages['base-catalog'] = 'demos/photo-cat/base-catalog.html';
+for (const engine of ['three', 'babylon', 'playcanvas', 'raw', 'pet', 'photo-cat']) {
   if (existsSync(resolve(root, `demos/${engine}/index.html`))) pages[engine] = `demos/${engine}/index.html`;
 }
 

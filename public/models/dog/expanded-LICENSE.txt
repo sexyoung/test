@@ -1,0 +1,23 @@
+poodle.glb
+Title: Poodle
+Author: Poly by Google
+Source: https://poly.pizza/m/eQmBaLcGbbE
+License: CC-BY-3.0 https://creativecommons.org/licenses/by/3.0/
+Changes: Original topology, rig and animation preserved. Downloaded GLB unchanged.
+Photo adapter additionally replaces source coat colors with an authored palette; geometry is not remorphed.
+
+chihuahua.glb
+Title: Chihuahua
+Author: Gobkit
+Source: https://gobkit.com/freebies
+License: CC0-1.0 https://creativecommons.org/publicdomain/zero/1.0/
+Changes: Original topology, rig and animation preserved. Downloaded GLB unchanged.
+Photo adapter additionally replaces source coat colors with an authored palette; geometry is not remorphed.
+
+dachshund.glb
+Title: Dashshund Dog
+Author: spooneystone
+Source: https://sketchfab.com/3d-models/dashshund-dog-cb0abb276cc247f095c0c527db987276
+License: CC-BY-4.0 https://creativecommons.org/licenses/by/4.0/
+Changes: Original topology, rig and animation preserved. Legacy specularGlossiness material converted to metallicRoughness for current Three.js.
+Photo adapter additionally replaces source coat colors with an authored palette; geometry is not remorphed.
