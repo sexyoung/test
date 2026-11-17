@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Run the Mac host's Blender from inside the devcontainer over SSH.
+# Container paths under CT_ROOT are rewritten to the Mac project path.
+MAC_USER="${BLENDER_MAC_USER:-ben}"
+MAC_HOST="${BLENDER_MAC_HOST:-host.docker.internal}"
+MAC_ROOT="${BLENDER_MAC_ROOT:-/Users/ben/web/sheepht/test}"
+CT_ROOT="${BLENDER_CT_ROOT:-/workspaces/test}"
+MAC_BLENDER="${BLENDER_MAC_BIN:-/Applications/Blender.app/Contents/MacOS/Blender}"
+
+args=()
+for a in "$@"; do args+=("$(printf '%q' "${a//$CT_ROOT/$MAC_ROOT}")"); done
+cwd="${PWD//$CT_ROOT/$MAC_ROOT}"
+[[ "$cwd" == /Users/* ]] || cwd="$MAC_ROOT"
+
+exec ssh -o BatchMode=yes "$MAC_USER@$MAC_HOST" \
+  "cd $(printf '%q' "$cwd") && $(printf '%q' "$MAC_BLENDER") ${args[*]}"

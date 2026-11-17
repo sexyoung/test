@@ -11,6 +11,12 @@
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 
+	// SSH key for calling the Mac host's Blender (see scripts/blender).
+	// Lives on the Mac at ~/.config/devcontainer-ssh; copied into ~/.ssh by postCreateCommand.sh.
+	"mounts": [
+		"source=${localEnv:HOME}/.config/devcontainer-ssh,target=/home/node/.devcontainer-ssh,type=bind,readonly"
+	],
+
 	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "bash .devcontainer/postCreateCommand.sh"
 
